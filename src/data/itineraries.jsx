@@ -1,7 +1,7 @@
 export const itineraries = [
   {
-    id: "FNS-PDGBKT0302",
-    title: "PADANG - BUKITTINGGI - 3H2M",
+    id: "padang-bukittinggi-3-hari-2-malam",
+    title: "PADANG - BUKITTINGGI - 3D2N",
     image: "/assets/alahanpanjang.jpg", // Pastikan gambar ada di public/assets
     description:
       "Nikmati pengalaman tak terlupakan mengejar matahari terbit di salah satu gunung terindah di Indonesia.",
