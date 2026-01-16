@@ -21,8 +21,8 @@ const Home = () => {
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
           <div className="max-w-[1000px] mx-auto bg-white/80 p-10 rounded-lg inline-block">
             <p className="text-2xl font-bold italic text-black">
-              "Satu pulau, sejuta cerita. Padukan gemerlap kota, warisan adat,
-              dan pesona alam dalam satu perjalanan."
+              &quot;Satu pulau, sejuta cerita. Padukan gemerlap kota, warisan
+              adat, dan pesona alam dalam satu perjalanan.&quot;
             </p>
           </div>
         </section>

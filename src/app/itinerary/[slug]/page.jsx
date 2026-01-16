@@ -74,7 +74,7 @@ export default function ItineraryDetail() {
               <div className="animate-fade-in space-y-10">
                 <div className="prose max-w-none">
                   <h3 className="text-2xl font-serif font-bold text-travel-dark mb-4 border-l-4 border-travel-pink pl-4">
-                    Tentang Paket Ini
+                    About
                   </h3>
                   <p className="text-gray-600 leading-loose text-justify text-lg">
                     {data.description}
@@ -132,9 +132,9 @@ export default function ItineraryDetail() {
               <div className="animate-fade-in space-y-12">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-serif font-bold text-travel-dark">
-                    Jadwal Perjalanan
+                    Travel Itinerary
                   </h3>
-                  <p className="text-gray-500">Rincian kegiatan harian Anda</p>
+                  <p className="text-gray-500">Your Daily Activities</p>
                 </div>
                 <div className="space-y-12 relative">
                   <div className="hidden md:block absolute left-[50%] top-0 bottom-0 w-[2px] bg-gray-100 -translate-x-1/2"></div>
@@ -148,7 +148,7 @@ export default function ItineraryDetail() {
                       <div className="w-full md:w-1/2">
                         <div className="relative group overflow-hidden rounded-xl shadow-lg h-[280px]">
                           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full font-bold text-travel-pink text-sm shadow-sm z-10">
-                            HARI {day.day}
+                            DAY {day.day}
                           </div>
                           <img
                             src={day.image || data.image}
@@ -185,6 +185,21 @@ export default function ItineraryDetail() {
                 </div>
               </div>
             )}
+          </div>
+          <div className="mt-8 pt-6 border-t border-dashed border-gray-200">
+            <div className="flex gap-4 bg-yellow-50 p-4 rounded-lg items-start">
+              {/* Ikon Info (Opsional, pakai emoji atau icon) */}
+              <span className="text-xl">⚠️</span>
+
+              <p className="text-sm text-gray-700 italic leading-relaxed">
+                <span className="font-bold text-gray-900 not-italic">
+                  Important Note:
+                </span>{" "}
+                Prices and itineraries are subject to change due to local
+                conditions (weather, traffic) and hotel availability, without
+                compromising the overall value of the tour.
+              </p>
+            </div>
           </div>
         </div>
 
