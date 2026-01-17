@@ -51,7 +51,7 @@ export default function ContactPage() {
       <PageHeader
         title="Hubungi Kami"
         subtitle="Kami Siap Membantu Rencana Perjalanan Anda"
-        image="/assets/pagaruyung.jpg"
+        image="/assets/pagaruyung.webp"
       />
       <div className="max-w-[1200px] mx-auto px-6 py-20">
         <div className="mb-12">

@@ -13,7 +13,7 @@ const Packages = () => {
       {/* Header Halaman */}
       <PageHeader
         title="Paket Wisata Favorit"
-        image="/assets/alahanpanjang.jpg"
+        image="/assets/alahan-panjang.webp"
         subtitle="Temukan destinasi impian Anda dengan harga terbaik"
       />
 
