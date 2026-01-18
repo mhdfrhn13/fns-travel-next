@@ -59,35 +59,44 @@ const Navbar = () => {
         <ul
           className={`hidden md:flex gap-8 font-sans font-medium text-sm tracking-wide ${textColorClass}`}
         >
-          {["Home", "Tentang Kami", "Packages", "Gallery", "Contact"].map(
-            (item) => (
-              <li key={item}>
-                {["Packages", "Gallery", "Tentang Kami", "Contact"].includes(
-                  item
-                ) ? (
-                  <Link
-                    href={
-                      item === "Tentang Kami"
-                        ? "/about"
-                        : item === "Contact"
+          {[
+            "Home",
+            "Tentang Kami",
+            "Packages",
+            "Transportation",
+            "Gallery",
+            "Contact",
+          ].map((item) => (
+            <li key={item}>
+              {[
+                "Packages",
+                "Gallery",
+                "Tentang Kami",
+                "Contact",
+                "Transportation",
+              ].includes(item) ? (
+                <Link
+                  href={
+                    item === "Tentang Kami"
+                      ? "/about"
+                      : item === "Contact"
                         ? "/contact"
                         : `/${item.toLowerCase()}`
-                    }
-                    className="hover:text-travel-pink transition-colors duration-300"
-                  >
-                    {item}
-                  </Link>
-                ) : (
-                  <Link
-                    href={`/#${item.toLowerCase().replace(" ", "")}`}
-                    className="hover:text-travel-pink transition-colors duration-300"
-                  >
-                    {item}
-                  </Link>
-                )}
-              </li>
-            )
-          )}
+                  }
+                  className="hover:text-travel-pink transition-colors duration-300"
+                >
+                  {item}
+                </Link>
+              ) : (
+                <Link
+                  href={`/#${item.toLowerCase().replace(" ", "")}`}
+                  className="hover:text-travel-pink transition-colors duration-300"
+                >
+                  {item}
+                </Link>
+              )}
+            </li>
+          ))}
         </ul>
 
         {/* HAMBURGER BUTTON */}
@@ -124,40 +133,46 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-white shadow-xl flex flex-col animate-fade-in border-t border-gray-100">
             <ul className="flex flex-col text-travel-dark font-medium">
-              {["Home", "Tentang Kami", "Packages", "Gallery", "Contact"].map(
-                (item) => (
-                  <li key={item} className="border-b border-gray-100">
-                    {[
-                      "Packages",
-                      "Gallery",
-                      "Tentang Kami",
-                      "Contact",
-                    ].includes(item) ? (
-                      <Link
-                        href={
-                          item === "Tentang Kami"
-                            ? "/about"
-                            : item === "Contact"
+              {[
+                "Home",
+                "Tentang Kami",
+                "Packages",
+                "Transportation",
+                "Gallery",
+                "Contact",
+              ].map((item) => (
+                <li key={item} className="border-b border-gray-100">
+                  {[
+                    "Packages",
+                    "Gallery",
+                    "Tentang Kami",
+                    "Contact",
+                    "Transportation",
+                  ].includes(item) ? (
+                    <Link
+                      href={
+                        item === "Tentang Kami"
+                          ? "/about"
+                          : item === "Contact"
                             ? "/contact"
                             : `/${item.toLowerCase()}`
-                        }
-                        className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-pink transition"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item}
-                      </Link>
-                    ) : (
-                      <Link
-                        href={`/#${item.toLowerCase().replace(" ", "")}`}
-                        className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-pink transition"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item}
-                      </Link>
-                    )}
-                  </li>
-                )
-              )}
+                      }
+                      className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-pink transition"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item}
+                    </Link>
+                  ) : (
+                    <Link
+                      href={`/#${item.toLowerCase().replace(" ", "")}`}
+                      className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-pink transition"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item}
+                    </Link>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         )}
