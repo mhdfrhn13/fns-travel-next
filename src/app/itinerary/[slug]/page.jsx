@@ -1,233 +1,219 @@
-"use client";
+import React from "react";
+import { client, urlFor } from "@/lib/sanity";
+import PageHeader from "@/components/UI/PageHeader";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  FaClock,
+  FaWhatsapp,
+  FaCheck,
+  FaTimes,
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+} from "react-icons/fa";
+import Reveal from "@/components/UI/Reveal";
+import { notFound } from "next/navigation";
 
-import React, { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { itineraries } from "@/data/itineraries";
+// 1. Fungsi Fetch Data Detail
+async function getItinerary(slug) {
+  const query = `*[_type == "itinerary" && slug.current == $slug][0]{
+    title,
+    image,
+    duration,
+    price,
+    description,
+    includes,
+    excludes,
+    days[] {
+      day,
+      title,
+      image,
+      activities
+    }
+  }`;
 
-export default function ItineraryDetail() {
-  const params = useParams(); // Ambil parameter dari URL
-  const { slug } = params;
+  const data = await client.fetch(query, { slug });
+  return data;
+}
 
-  const data = itineraries.find((item) => item.id === slug);
-  const [activeTab, setActiveTab] = useState("summary");
+// 2. Komponen Utama
+const ItineraryDetail = async ({ params }) => {
+  // Di Next.js 16, params harus di-await (praktik terbaru)
+  const { slug } = await params;
+  const data = await getItinerary(slug);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
+  console.log("Data Days:", JSON.stringify(data?.days, null, 2));
 
+  // Jika slug tidak ditemukan di Sanity, lempar ke halaman 404
   if (!data) {
-    return (
-      <div className="text-center py-20 mt-20">Paket tidak ditemukan.</div>
-    );
+    return notFound();
   }
 
   return (
-    <div className="bg-white pb-20">
-      {/* HEADER BANNER */}
-      <header
-        className="h-[60vh] bg-cover bg-center flex items-end justify-center relative"
-        style={{ backgroundImage: `url(${data.image})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-        <div className="z-10 text-center px-4 pb-32 animate-fade-in max-w-[900px]">
-          <h1 className="text-white text-3xl md:text-5xl font-serif font-bold mb-4 drop-shadow-lg leading-tight">
-            {data.title}
-          </h1>
-          <div className="flex justify-center gap-4 md:gap-6 text-white/90 font-medium text-sm md:text-base">
-            <span className="bg-white/10 border border-white/20 px-5 py-2 rounded-full backdrop-blur-md flex items-center gap-2">
-              ⏱ {data.duration}
-            </span>
-            <span className="bg-travel-pink px-5 py-2 rounded-full shadow-lg flex items-center gap-2">
-              🏷 {data.price || "Best Price"}
-            </span>
-          </div>
-        </div>
-      </header>
+    <main className="bg-white min-h-screen pb-20">
+      {/* --- HEADER --- */}
+      <PageHeader
+        title={data.title}
+        image={
+          data.image ? urlFor(data.image).url() : "/assets/lembah-harau.webp"
+        }
+        subtitle={`Paket Wisata ${data.duration} Terbaik`}
+      />
 
-      {/* MAIN CONTENT */}
-      <main className="max-w-[1100px] mx-auto px-4 -mt-20 relative z-20">
-        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden min-h-[500px]">
-          {/* TABS NAVIGATION */}
-          <div className="flex border-b border-gray-100 bg-gray-50/50">
-            {["summary", "itinerary"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex-1 py-6 text-sm md:text-base font-bold uppercase tracking-widest transition-all relative
-                    ${
-                      activeTab === tab
-                        ? "text-travel-pink bg-white"
-                        : "text-gray-400 hover:text-gray-600 hover:bg-gray-100"
-                    }
-                  `}
-              >
-                {tab}
-                {activeTab === tab && (
-                  <div className="absolute top-0 left-0 w-full h-1 bg-travel-pink"></div>
-                )}
-              </button>
-            ))}
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* === KOLOM KIRI (KONTEN UTAMA) === */}
+          <div className="lg:col-span-2 space-y-10">
+            {/* 1. Deskripsi & Highlight */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <FaMapMarkerAlt className="text-travel-pink" />
+                Tentang Destinasi
+              </h2>
+              <p className="text-gray-600 leading-relaxed whitespace-pre-line text-justify">
+                {data.description}
+              </p>
+            </div>
 
-          <div className="p-6 md:p-10">
-            {activeTab === "summary" && (
-              <div className="animate-fade-in space-y-10">
-                <div className="prose max-w-none">
-                  <h3 className="text-2xl font-serif font-bold text-travel-dark mb-4 border-l-4 border-travel-pink pl-4">
-                    About
-                  </h3>
-                  <p className="text-gray-600 leading-loose text-justify text-lg">
-                    {data.description}
-                  </p>
-                </div>
+            {/* 2. Itinerary Harian (Timeline) */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 flex items-center gap-2">
+                <FaCalendarAlt className="text-travel-pink" />
+                Rencana Perjalanan
+              </h2>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="bg-emerald-50 rounded-xl p-6 border border-emerald-100 shadow-sm">
-                    <div className="flex items-center gap-3 mb-4 border-b border-emerald-200 pb-3">
-                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">
-                        ✓
+              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                {data.days?.map((day, index) => (
+                  <Reveal key={index} direction="up" delay={index * 0.1}>
+                    <div className="relative flex items-start group">
+                      {/* Bullet Point Timeline */}
+                      <div className="absolute left-0 ml-5 -translate-x-1/2 md:translate-x-0 top-0 mt-1">
+                        <div className="w-4 h-4 rounded-full bg-travel-pink border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
                       </div>
-                      <h4 className="text-lg font-bold text-emerald-800">
-                        Price Includes
-                      </h4>
+
+                      <div className="ml-12 w-full">
+                        <span className="text-xs font-bold text-travel-pink uppercase tracking-wider mb-1 block">
+                          Hari Ke-{day.day}
+                        </span>
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">
+                          {day.title}
+                        </h3>
+
+                        {/* Foto Kegiatan (Opsional per hari) */}
+                        {day.image && (
+                          <div className="relative w-full h-48 md:h-64 mb-4 rounded-xl overflow-hidden shadow-sm">
+                            <Image
+                              src={urlFor(day.image).url()}
+                              alt={day.title}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        )}
+
+                        {/* List Aktivitas */}
+                        <ul className="space-y-2">
+                          {day.activities?.map((act, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-3 text-gray-600 text-sm md:text-base"
+                            >
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0"></span>
+                              <span>{act}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* === KOLOM KANAN (SIDEBAR STICKY) === */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24 space-y-6">
+              {/* Card Harga & Booking */}
+              <Reveal direction="left" delay={0.2}>
+                <div className="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-travel-pink">
+                  <div className="flex items-center gap-2 text-gray-500 mb-2">
+                    <FaClock />
+                    <span className="text-sm font-medium">{data.duration}</span>
+                  </div>
+                  <div className="mb-6">
+                    <p className="text-sm text-gray-400">Harga mulai dari</p>
+                    <p className="text-3xl font-bold text-travel-dark">
+                      {data.price}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      *Harga dapat berubah sewaktu-waktu
+                    </p>
+                  </div>
+
+                  <Link
+                    href={`https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20tertarik%20dengan%20paket%20wisata%20${data.title}`}
+                    target="_blank"
+                    className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg hover:shadow-green-200 transform hover:-translate-y-1"
+                  >
+                    <FaWhatsapp size={20} />
+                    Booking via WhatsApp
+                  </Link>
+                </div>
+              </Reveal>
+
+              {/* Card Include/Exclude */}
+              <Reveal direction="left" delay={0.4}>
+                <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+                  <h3 className="font-bold text-gray-800 mb-4 text-lg border-b pb-2">
+                    Fasilitas
+                  </h3>
+
+                  {/* Includes */}
+                  <div className="mb-6">
+                    <p className="text-sm font-bold text-green-600 mb-3 flex items-center gap-2">
+                      <FaCheck className="bg-green-100 p-1 rounded-full text-xl" />{" "}
+                      Termasuk
+                    </p>
                     <ul className="space-y-2">
                       {data.includes?.map((item, i) => (
                         <li
                           key={i}
-                          className="flex items-start gap-3 text-gray-700 text-sm"
+                          className="text-sm text-gray-600 flex items-start gap-2"
                         >
-                          <span className="text-emerald-500 mt-0.5">●</span>{" "}
-                          {item}
+                          <span className="text-green-500 mt-1">✓</span> {item}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="bg-rose-50 rounded-xl p-6 border border-rose-100 shadow-sm">
-                    <div className="flex items-center gap-3 mb-4 border-b border-rose-200 pb-3">
-                      <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 font-bold">
-                        ✕
-                      </div>
-                      <h4 className="text-lg font-bold text-rose-800">
-                        Price Excludes
-                      </h4>
+                  {/* Excludes */}
+                  {data.excludes && data.excludes.length > 0 && (
+                    <div>
+                      <p className="text-sm font-bold text-red-500 mb-3 flex items-center gap-2">
+                        <FaTimes className="bg-red-100 p-1 rounded-full text-xl" />{" "}
+                        Tidak Termasuk
+                      </p>
+                      <ul className="space-y-2">
+                        {data.excludes.map((item, i) => (
+                          <li
+                            key={i}
+                            className="text-sm text-gray-600 flex items-start gap-2"
+                          >
+                            <span className="text-red-400 mt-1">✕</span> {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-2">
-                      {data.excludes?.map((item, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-3 text-gray-700 text-sm"
-                        >
-                          <span className="text-rose-400 mt-0.5">●</span> {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  )}
                 </div>
-              </div>
-            )}
-
-            {activeTab === "itinerary" && (
-              <div className="animate-fade-in space-y-12">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-serif font-bold text-travel-dark">
-                    Travel Itinerary
-                  </h3>
-                  <p className="text-gray-500">Your Daily Activities</p>
-                </div>
-                <div className="space-y-12 relative">
-                  <div className="hidden md:block absolute left-[50%] top-0 bottom-0 w-[2px] bg-gray-100 -translate-x-1/2"></div>
-                  {data.days.map((day, index) => (
-                    <div
-                      key={day.day}
-                      className={`flex flex-col md:flex-row items-center gap-8 ${
-                        index % 2 !== 0 ? "md:flex-row-reverse" : ""
-                      }`}
-                    >
-                      <div className="w-full md:w-1/2">
-                        <div className="relative group overflow-hidden rounded-xl shadow-lg h-[280px]">
-                          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full font-bold text-travel-pink text-sm shadow-sm z-10">
-                            DAY {day.day}
-                          </div>
-                          <img
-                            src={day.image || data.image}
-                            alt={day.title}
-                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                          />
-                        </div>
-                      </div>
-                      <div className="w-full md:w-1/2 relative">
-                        <div
-                          className={`hidden md:block absolute top-1/2 w-4 h-4 bg-travel-pink rounded-full border-4 border-white shadow-md z-10 ${
-                            index % 2 !== 0 ? "-right-[42px]" : "-left-[42px]"
-                          }`}
-                        ></div>
-                        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                          <h4 className="text-xl font-bold text-gray-800 mb-3 leading-snug">
-                            {day.title}
-                          </h4>
-                          <ul className="space-y-2">
-                            {day.activities.map((act, idx) => (
-                              <li
-                                key={idx}
-                                className="text-gray-600 text-sm flex gap-3 items-start"
-                              >
-                                <span className="min-w-[6px] h-[6px] rounded-full bg-travel-pink mt-1.5"></span>{" "}
-                                {act}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="mt-8 pt-6 border-t border-dashed border-gray-200">
-            <div className="flex gap-4 bg-yellow-50 p-4 rounded-lg items-start">
-              {/* Ikon Info (Opsional, pakai emoji atau icon) */}
-              <span className="text-xl">⚠️</span>
-
-              <p className="text-sm text-gray-700 italic leading-relaxed">
-                <span className="font-bold text-gray-900 not-italic">
-                  Important Note:
-                </span>{" "}
-                Prices and itineraries are subject to change due to local
-                conditions (weather, traffic) and hotel availability, without
-                compromising the overall value of the tour.
-              </p>
+              </Reveal>
             </div>
           </div>
         </div>
-
-        <div className="mt-12 text-center pb-10">
-          <a
-            href={`https://wa.me/6285365968845?text=Halo%2C%20saya%20tertarik%20booking%20paket%20${data.title}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-travel-pink text-white text-lg font-bold py-4 px-12 rounded-full shadow-lg hover:bg-pink-700 hover:-translate-y-1 transition-all"
-          >
-            <span>Booking via WhatsApp</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 20.25c4.97 0 9-3.69 9-8.25s-4.03-8.25-9-8.25S3 7.44 3 12c0 2.1.96 4.1 2.7 5.6C5.7 19.65 12 20.25 12 20.25z"
-              />
-            </svg>
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
-}
+};
+
+export default ItineraryDetail;

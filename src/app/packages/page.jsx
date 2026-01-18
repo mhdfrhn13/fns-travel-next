@@ -1,88 +1,139 @@
-// src/app/packages/page.jsx
-"use client";
-
+import React from "react";
 import PageHeader from "@/components/UI/PageHeader";
-import { itineraries } from "@/data/itineraries";
 import Link from "next/link";
 import Image from "next/image";
-import { FaClock, FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
+import { FaClock, FaTag, FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
+import Reveal from "@/components/UI/Reveal";
 
-const Packages = () => {
+// 1. Import Client Sanity
+import { client, urlFor } from "@/lib/sanity";
+
+// 2. Konfigurasi Revalidate (Opsional: agar data update tiap 60 detik)
+export const revalidate = 60;
+
+// 3. Fungsi Fetch Data
+async function getPackages() {
+  const query = `*[_type == "itinerary"] | order(title asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    image,
+    duration,
+    price,
+    description,
+    includes
+  }`;
+
+  return await client.fetch(query);
+}
+
+const Packages = async () => {
+  const packages = await getPackages();
+
   return (
     <main className="bg-gray-50 min-h-screen pb-20">
       {/* Header Halaman */}
       <PageHeader
-        title="Paket Wisata Favorit"
-        image="/assets/alahan-panjang.webp"
-        subtitle="Temukan destinasi impian Anda dengan harga terbaik"
+        title="Paket Wisata Eksklusif"
+        image="/assets/lembah-harau.webp" // Pastikan gambar ini ada di folder public/assets
+        subtitle="Temukan pengalaman liburan tak terlupakan di Ranah Minang"
       />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
-        {/* Grid Layout: 3 Kolom di Desktop */}
+        {/* State Kosong (Jika belum input data di Sanity) */}
+        {packages.length === 0 && (
+          <div className="text-center bg-white p-10 rounded-2xl shadow-lg">
+            <h3 className="text-xl text-gray-600">
+              Belum ada paket wisata yang tersedia saat ini.
+            </h3>
+            <p className="text-gray-400 mt-2">
+              Silakan cek kembali nanti atau hubungi admin.
+            </p>
+          </div>
+        )}
+
+        {/* Grid Paket */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {itineraries.map((item) => (
-            <div
-              key={item.id}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full"
-            >
-              {/* --- BAGIAN 1: GAMBAR DI ATAS --- */}
-              <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+          {packages.map((pkg, index) => (
+            <Reveal key={pkg._id} direction="up" delay={index * 0.1}>
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
+                {/* Image Wrapper */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                  {pkg.image ? (
+                    <Image
+                      src={urlFor(pkg.image).url()}
+                      alt={pkg.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
+                      No Image
+                    </div>
+                  )}
 
-                {/* Badge Durasi tetap di sini */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-travel-dark shadow-sm flex items-center gap-2">
-                  <FaClock className="text-travel-pink" />
-                  {item.duration}
-                </div>
-              </div>
-
-              {/* --- BAGIAN 2: TEKS DI BAWAH --- */}
-              <div className="p-6 flex flex-col flex-grow">
-                {/* Label Lokasi Kecil */}
-                <div className="flex items-center gap-1 text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">
-                  <FaMapMarkerAlt className="text-travel-pink" />
-                  Sumatera Barat
-                </div>
-
-                {/* Judul Paket */}
-                <h3 className="text-xl font-serif font-bold text-gray-900 mb-3 group-hover:text-travel-pink transition-colors">
-                  {item.title}
-                </h3>
-
-                {/* Deskripsi Singkat */}
-                <p className="text-gray-500 text-sm mb-6 line-clamp-3 leading-relaxed">
-                  {item.description}
-                </p>
-
-                {/* Spacer agar harga selalu di bawah */}
-                <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
-                  {/* Harga */}
-                  <div className="flex flex-col">
-                    <span className="text-gray-400 text-[10px] font-bold uppercase">
-                      Mulai dari
-                    </span>
-                    <span className="text-travel-dark font-bold text-lg">
-                      {item.price}
-                    </span>
+                  {/* Badge Durasi (Overlay) */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5 text-xs font-bold text-gray-800">
+                    <FaClock className="text-orange-500" />
+                    {pkg.duration}
                   </div>
+                </div>
 
-                  {/* Tombol Detail */}
-                  <Link
-                    href={`/itinerary/${item.id}`}
-                    className="flex items-center gap-2 bg-travel-dark text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-travel-pink transition-colors shadow-md group-hover:shadow-lg"
-                  >
-                    Detail
-                    <FaArrowRight size={12} />
-                  </Link>
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-serif font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors line-clamp-2">
+                    {pkg.title}
+                  </h3>
+
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-3 flex-grow">
+                    {pkg.description}
+                  </p>
+
+                  {/* Divider */}
+                  <div className="w-full h-px bg-gray-100 my-4"></div>
+
+                  {/* Highlights (Includes) - Mengambil 2 item pertama saja */}
+                  {pkg.includes && pkg.includes.length > 0 && (
+                    <div className="mb-5 flex flex-wrap gap-2">
+                      {pkg.includes.slice(0, 2).map((item, i) => (
+                        <span
+                          key={i}
+                          className="text-[10px] bg-blue-50 text-blue-600 px-2 py-1 rounded-md font-medium"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                      {pkg.includes.length > 2 && (
+                        <span className="text-[10px] bg-gray-50 text-gray-500 px-2 py-1 rounded-md font-medium">
+                          +{pkg.includes.length - 2} lainnya
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Footer Card: Harga & Tombol */}
+                  <div className="flex items-end justify-between mt-auto">
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400 mb-1">
+                        Mulai dari
+                      </span>
+                      <div className="flex items-center gap-1 text-green-600 font-bold text-lg">
+                        <FaTag size={14} />
+                        {pkg.price}
+                      </div>
+                    </div>
+
+                    <Link
+                      href={`/itinerary/${pkg.slug}`}
+                      className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors group-hover:translate-x-1"
+                    >
+                      <FaArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
