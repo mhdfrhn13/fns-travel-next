@@ -58,13 +58,16 @@ const Packages = async () => {
             <Reveal key={pkg._id} direction="up" delay={index * 0.1}>
               <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
                 {/* Image Wrapper */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-white">
+                  {" "}
+                  {/* <--- 1. Ubah background jadi putih */}
                   {pkg.image ? (
                     <Image
                       src={urlFor(pkg.image).url()}
                       alt={pkg.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      // 2. Ganti 'object-cover' jadi 'object-contain' di bawah ini
+                      className="object-contain transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
@@ -72,7 +75,6 @@ const Packages = async () => {
                       No Image
                     </div>
                   )}
-
                   {/* Badge Durasi (Overlay) */}
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5 text-xs font-bold text-gray-800">
                     <FaClock className="text-orange-500" />
@@ -92,25 +94,6 @@ const Packages = async () => {
 
                   {/* Divider */}
                   <div className="w-full h-px bg-gray-100 my-4"></div>
-
-                  {/* Highlights (Includes) - Mengambil 2 item pertama saja */}
-                  {pkg.includes && pkg.includes.length > 0 && (
-                    <div className="mb-5 flex flex-wrap gap-2">
-                      {pkg.includes.slice(0, 2).map((item, i) => (
-                        <span
-                          key={i}
-                          className="text-[10px] bg-blue-50 text-blue-600 px-2 py-1 rounded-md font-medium"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                      {pkg.includes.length > 2 && (
-                        <span className="text-[10px] bg-gray-50 text-gray-500 px-2 py-1 rounded-md font-medium">
-                          +{pkg.includes.length - 2} lainnya
-                        </span>
-                      )}
-                    </div>
-                  )}
 
                   {/* Footer Card: Harga & Tombol */}
                   <div className="flex items-end justify-between mt-auto">

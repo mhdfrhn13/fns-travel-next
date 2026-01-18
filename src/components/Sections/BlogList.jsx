@@ -32,13 +32,13 @@ const BlogList = ({ data }) => {
               key={pkg._id}
               className="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all"
             >
-              <div className="relative h-60 overflow-hidden">
+              <div className="relative h-60 overflow-hidden bg-white">
                 {pkg.image ? (
                   <Image
                     src={urlFor(pkg.image).url()}
                     alt={pkg.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-contain transition-transform duration-700 group-hover:scale-110"
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">
