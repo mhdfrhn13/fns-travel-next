@@ -13,10 +13,12 @@ import {
 } from "react-icons/fa";
 import Reveal from "@/components/UI/Reveal";
 import { notFound } from "next/navigation";
+import ReviewSection from "@/components/Sections/ReviewSection";
 
 // 1. Fungsi Fetch Data Detail
 async function getItinerary(slug) {
   const query = `*[_type == "itinerary" && slug.current == $slug][0]{
+    _id,
     title,
     image,
     duration,
@@ -29,6 +31,12 @@ async function getItinerary(slug) {
       title,
       image,
       activities
+    },
+    "reviews": *[_type == "review" && package._ref == ^._id && isApproved == true] | order(_createdAt desc) {
+      _id,
+      name,
+      rating,
+      comment
     }
   }`;
 
@@ -38,13 +46,9 @@ async function getItinerary(slug) {
 
 // 2. Komponen Utama
 const ItineraryDetail = async ({ params }) => {
-  // Di Next.js 16, params harus di-await (praktik terbaru)
   const { slug } = await params;
   const data = await getItinerary(slug);
 
-  console.log("Data Days:", JSON.stringify(data?.days, null, 2));
-
-  // Jika slug tidak ditemukan di Sanity, lempar ke halaman 404
   if (!data) {
     return notFound();
   }
@@ -128,6 +132,14 @@ const ItineraryDetail = async ({ params }) => {
                   </Reveal>
                 ))}
               </div>
+            </div>
+
+            {/* 3. Review Section (BARU) */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <ReviewSection
+                packageId={data._id}
+                existingReviews={data.reviews || []}
+              />
             </div>
           </div>
 

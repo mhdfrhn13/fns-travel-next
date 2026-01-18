@@ -18,6 +18,9 @@
   /* --- 2. KONFIGURASI FONT (Otomatis ambil dari layout.js) --- */
   --font-serif: var(--font-serif); /* Playfair Display */
   --font-sans: var(--font-sans); /* Poppins */
+  --color-travel-pink: #ff385c; /* Warna Pink khas Travel (mirip Airbnb) */
+  --color-travel-dark: #222222; /* Warna Hitam/Dark Grey */
+  --font-serif: "Merriweather", serif; /* Opsional: jika pakai font serif */
 }
 
 /* Style Tambahan untuk Scrollbar yang cantik */
