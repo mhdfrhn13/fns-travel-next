@@ -32,13 +32,13 @@ const GalleryPage = () => {
   };
 
   return (
-    <main className="bg-gray-50 min-h-screen pb-20">
+    <main className="bg-white pb-20 pt-[80px]">
       <PageHeader
         title="Galeri Perjalanan"
         subtitle="Momen-momen indah yang telah kami abadikan bersama para pelanggan setia."
         image="/assets/pagaruyung.webp"
       />
-
+      <div className="max-w-[1200px] mx-auto px-6 py-20"></div>
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
         {gallery.length === 0 && (
           <div className="text-center bg-white p-12 rounded-2xl shadow-lg">

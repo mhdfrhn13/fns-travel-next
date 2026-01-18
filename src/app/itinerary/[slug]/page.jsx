@@ -14,6 +14,12 @@ import {
 import Reveal from "@/components/UI/Reveal";
 import { notFound } from "next/navigation";
 import ReviewSection from "@/components/Sections/ReviewSection";
+import {
+  IoTimeOutline,
+  IoWalletOutline,
+  IoWarningOutline,
+  IoCheckmarkCircleOutline,
+} from "react-icons/io5";
 
 // 1. Fungsi Fetch Data Detail
 async function getItinerary(slug) {
@@ -86,7 +92,7 @@ const ItineraryDetail = async ({ params }) => {
                 Rencana Perjalanan
               </h2>
 
-              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
                 {data.days?.map((day, index) => (
                   <Reveal key={index} direction="up" delay={index * 0.1}>
                     <div className="relative flex items-start group">
@@ -131,6 +137,23 @@ const ItineraryDetail = async ({ params }) => {
                     </div>
                   </Reveal>
                 ))}
+              </div>
+            </div>
+
+            {/* --- FITUR BARU: KARTU PEMBERITAHUAN (WARNING) --- */}
+            <div className="bg-orange-50 border-l-4 border-orange-400 p-5 rounded-r-lg mt-8 animate-fade-in">
+              <div className="flex items-start gap-3">
+                <IoWarningOutline className="text-orange-500 text-2xl flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-orange-800 text-sm uppercase tracking-wide mb-1">
+                    Penting Dibaca
+                  </h4>
+                  <p className="text-orange-700 text-sm leading-relaxed">
+                    Jadwal perjalanan sewaktu-waktu bisa berubah sesuai kondisi
+                    lapangan, lalu lintas, dan cuaca demi keselamatan dan
+                    kenyamanan bersama.
+                  </p>
+                </div>
               </div>
             </div>
 

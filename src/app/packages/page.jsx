@@ -31,14 +31,14 @@ const Packages = async () => {
   const packages = await getPackages();
 
   return (
-    <main className="bg-gray-50 min-h-screen pb-20">
+    <main className="bg-white pb-20 pt-[80px]">
       {/* Header Halaman */}
       <PageHeader
         title="Paket Wisata Eksklusif"
         image="/assets/lembah-harau.webp" // Pastikan gambar ini ada di folder public/assets
         subtitle="Temukan pengalaman liburan tak terlupakan di Ranah Minang"
       />
-
+      <div className="max-w-[1200px] mx-auto px-6 py-20"></div>
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
         {/* State Kosong (Jika belum input data di Sanity) */}
         {packages.length === 0 && (
