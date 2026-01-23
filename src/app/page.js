@@ -61,8 +61,7 @@ const Home = async () => {
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
           <div className="max-w-[1000px] mx-auto bg-white/80 p-10 rounded-lg inline-block relative z-10">
             <p className="text-2xl font-bold italic text-black">
-              &quot;Satu pulau, sejuta cerita. Padukan gemerlap kota, warisan
-              adat, dan pesona alam dalam satu perjalanan.&quot;
+              &quot;What is a Vacation? Lets Find Out with Us!&quot;
             </p>
           </div>
         </section>
