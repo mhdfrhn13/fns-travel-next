@@ -24,7 +24,7 @@ const PackagesPage = async () => {
   const packages = await getPackages();
 
   return (
-    <main className="bg-gray-50 min-h-screen pb-20">
+    <main className="bg-white pb-20 pt-[80px]">
       <Reveal direction="down">
         <PageHeader
           title="Paket Wisata"
@@ -33,7 +33,7 @@ const PackagesPage = async () => {
         />
       </Reveal>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
+      <div className="max-w-[1200px] mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg, index) => (
             <Reveal key={pkg._id} direction="up" delay={index * 0.1}>
