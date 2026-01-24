@@ -3,23 +3,21 @@
 @theme {
   /* --- 1. KONFIGURASI WARNA (Bisa Anda ganti kode HEX-nya) --- */
 
-  /* Warna Utama (Hijau Hutan Gelap - Elegan & Alam) */
-  --color-travel-dark: #1a4d2e;
+  /* Biru Gelap - Profesional & Elegan */
+  --color-travel-dark: #0f172a;
 
-  /* Warna Aksen (Emas/Krem - Mewah & Hangat) */
-  --color-travel-gold: #d4a373;
+  /* Emas/Kuning Redup - Mewah */
+  --color-travel-gold: #c5a059;
 
-  /* Warna Tombol/Highlight (Oranye Bata - Semangat) */
-  --color-travel-pink: #e76f51;
+  /* Warna Aksen untuk Interaksi (Biru Royal) Warna Utama*/
+  --color-travel-pink: #1e40af;
 
-  /* Warna Latar Belakang (Putih Tulang - Bersih) */
-  --color-bg-soft: #fdfaf6;
+  /* Latar Belakang (Abu-abu sangat muda agar biru terlihat menonjol) */
+  --color-bg-soft: #f8fafc;
 
   /* --- 2. KONFIGURASI FONT (Otomatis ambil dari layout.js) --- */
   --font-serif: var(--font-serif); /* Playfair Display */
   --font-sans: var(--font-sans); /* Poppins */
-  --color-travel-pink: #ff385c; /* Warna Pink khas Travel (mirip Airbnb) */
-  --color-travel-dark: #222222; /* Warna Hitam/Dark Grey */
   --font-serif: "Merriweather", serif; /* Opsional: jika pakai font serif */
 }
 
