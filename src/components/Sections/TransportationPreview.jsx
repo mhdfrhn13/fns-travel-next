@@ -10,25 +10,19 @@ const TransportationPreview = ({ data }) => {
 
   return (
     <section className="py-20 bg-gray-50">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="flex justify-between items-end mb-12">
+        <div className="text-center mb-12">
           <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-800 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
               Armada Kami
             </h2>
-            <div className="w-24 h-1 bg-travel-pink"></div>
-            <p className="mt-4 text-gray-600 max-w-xl">
+            <div className="w-20 h-1 bg-travel-pink mx-auto rounded-full mb-4"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Pilihan kendaraan terbaik untuk kenyamanan perjalanan wisata
               maupun dinas Anda.
             </p>
           </div>
-          <Link
-            href="/transportation"
-            className="hidden md:flex items-center gap-2 text-travel-pink font-bold hover:gap-4 transition-all"
-          >
-            Lihat Semua <FaArrowRight />
-          </Link>
         </div>
 
         {/* Grid Mobil */}
@@ -100,6 +94,29 @@ const TransportationPreview = ({ data }) => {
             className="inline-flex items-center gap-2 text-travel-pink font-bold"
           >
             Lihat Semua Armada <FaArrowRight />
+          </Link>
+        </div>
+        {/* BUTTON LIHAT SEMUA */}
+        <div className="text-center mt-12">
+          <Link
+            href="/transportation"
+            className="inline-flex items-center gap-2 bg-black text-white px-10 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all hover:shadow-lg transform hover:scale-105"
+          >
+            Lihat Semua Armada
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </Link>
         </div>
       </div>

@@ -55,18 +55,6 @@ const Home = async () => {
         <About />
       </Reveal>
 
-      {/* 3. QUOTE SECTION (Pagaruyung) */}
-      <Reveal direction="right">
-        <section className="bg-[url('/assets/pagaruyung.webp')] bg-fixed bg-cover bg-center py-32 md:py-48 text-center relative group">
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-          <div className="max-w-[1000px] mx-auto bg-white/80 p-10 rounded-lg inline-block relative z-10">
-            <p className="text-2xl font-bold italic text-black">
-              &quot;What is a Vacation? Lets Find Out with Us!&quot;
-            </p>
-          </div>
-        </section>
-      </Reveal>
-
       {/* 4. GALLERY SECTION (Carousel) */}
       {/* Reveal dihapus atau disesuaikan karena Carousel sudah punya animasi sendiri, tapi tetap pakai Reveal boleh */}
       <Reveal direction="left">

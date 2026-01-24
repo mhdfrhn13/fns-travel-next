@@ -74,6 +74,29 @@ const BlogList = ({ data }) => {
             </div>
           ))}
         </div>
+        {/* BUTTON LIHAT SEMUA */}
+        <div className="text-center mt-12">
+          <Link
+            href="/packages"
+            className="inline-flex items-center gap-2 bg-black text-white px-10 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all hover:shadow-lg transform hover:scale-105"
+          >
+            Lihat Semua Paket
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );
