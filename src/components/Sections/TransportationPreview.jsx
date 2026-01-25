@@ -1,113 +1,106 @@
+"use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { FaUserFriends, FaWhatsapp, FaArrowRight } from "react-icons/fa";
-import { urlFor } from "@/lib/sanity"; // Helper untuk gambar Sanity
+import { urlFor } from "@/lib/sanity";
+import { FaUserGroup, FaCarSide, FaWhatsapp } from "react-icons/fa6";
 
 const TransportationPreview = ({ data }) => {
-  // Jika tidak ada data, jangan tampilkan section ini
-  if (!data || data.length === 0) return null;
-
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="transportation" className="py-20 bg-white">
+      <div className="max-w-[1200px] mx-auto px-4">
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+          <div className="max-w-2xl">
+            <span className="text-travel-pink font-bold tracking-wider text-sm uppercase mb-2 block">
+              Transportasi Nyaman
+            </span>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-travel-dark">
               Armada Kami
             </h2>
-            <div className="w-20 h-1 bg-travel-pink mx-auto rounded-full mb-4"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Pilihan kendaraan terbaik untuk kenyamanan perjalanan wisata
-              maupun dinas Anda.
+            <p className="mt-4 text-gray-600 font-sans">
+              Perjalanan aman dan nyaman dengan unit terbaru dan driver
+              berpengalaman.
             </p>
           </div>
+          <Link
+            href="/transportation"
+            className="hidden md:inline-flex items-center font-medium text-travel-dark hover:text-travel-pink transition-colors"
+          >
+            Lihat Semua Armada &rarr;
+          </Link>
         </div>
 
-        {/* Grid Mobil */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {data.map((car) => (
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {data?.map((car) => (
             <div
               key={car._id}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col"
+              className="group bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
-              {/* Gambar Mobil */}
-              <div className="relative w-full h-56 bg-gray-100 overflow-hidden">
-                {car.image ? (
-                  <Image
+              {/* 1. Image Container */}
+              <div className="relative aspect-[16/10] bg-gray-50 rounded-xl overflow-hidden mb-6">
+                {/* Background dekoratif bulat di belakang mobil */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-travel-pink/5 rounded-full blur-2xl group-hover:bg-travel-pink/10 transition-colors"></div>
+
+                {car.image && (
+                  <img
                     src={urlFor(car.image).url()}
                     alt={car.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="relative w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                   />
-                ) : (
-                  <div className="flex items-center justify-center h-full text-gray-400">
-                    No Image
-                  </div>
                 )}
-                <div className="absolute top-4 left-4 bg-travel-dark/90 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                  {car.type || "Armada"}
-                </div>
               </div>
 
-              {/* Detail Info */}
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-travel-pink transition-colors">
-                  {car.name}
-                </h3>
-
-                <div className="flex items-center gap-2 text-gray-500 text-sm mb-4 font-medium">
-                  <FaUserFriends className="text-travel-pink" />
-                  <span>{car.capacity}</span>
-                </div>
-
-                {/* Footer Card */}
-                <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-                  <div className="flex flex-col">
-                    <span className="text-[10px] text-gray-400 font-bold uppercase">
-                      Mulai dari
-                    </span>
-                    <span className="text-travel-dark font-bold">
-                      {car.price}
-                    </span>
+              {/* 2. Car Details */}
+              <div className="space-y-4">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 font-serif">
+                      {car.name}
+                    </h3>
+                    <p className="text-sm text-gray-500">{car.type}</p>
                   </div>
-
-                  <Link
-                    href={`https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20tertarik%20sewa%20mobil%20${car.name}`}
-                    target="_blank"
-                    className="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center hover:bg-green-600 hover:text-white transition-all"
-                  >
-                    <FaWhatsapp size={20} />
-                  </Link>
+                  <div className="text-right">
+                    <p className="text-lg font-bold text-travel-pink">
+                      {car.price}
+                    </p>
+                    <p className="text-xs text-gray-400">/ hari</p>
+                  </div>
                 </div>
+
+                {/* Spesifikasi (Grid Kecil) */}
+                <div className="grid grid-cols-2 gap-3 py-4 border-t border-b border-gray-50">
+                  <div className="flex items-center gap-2 text-gray-600 text-sm">
+                    <FaUserGroup className="text-travel-pink" />
+                    <span>{car.capacity} Orang</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600 text-sm">
+                    <FaCarSide className="text-travel-pink" />
+                    <span>Unit {car.type}</span>
+                  </div>
+                </div>
+
+                {/* Action Button */}
+                <a
+                  href={`https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20tertarik%20sewa%20mobil%20${car.name}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center py-3 rounded-xl bg-gray-900 text-white font-medium hover:bg-travel-pink transition-colors duration-300 flex items-center justify-center gap-2"
+                >
+                  <FaWhatsapp className="text-lg" /> Sewa Sekarang
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* BUTTON LIHAT SEMUA */}
-        <div className="text-center mt-12">
+        {/* Mobile View All Button */}
+        <div className="mt-8 text-center md:hidden">
           <Link
             href="/transportation"
-            className="inline-flex items-center gap-2 bg-black text-white px-10 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all hover:shadow-lg transform hover:scale-105"
+            className="text-sm font-bold underline text-travel-dark"
           >
             Lihat Semua Armada
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
           </Link>
         </div>
       </div>

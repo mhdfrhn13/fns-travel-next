@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [navBg, setNavBg] = useState(false);
-  const pathname = usePathname(); // Pengganti useLocation
+  const pathname = usePathname();
 
   // 1. Cek apakah ini halaman Home
   const isHomePage = pathname === "/";
@@ -36,9 +36,13 @@ const Navbar = () => {
   };
 
   const isSolidNavbar = !isHomePage || navBg || isMobileMenuOpen;
+
+  // LOGIKA STYLE BARU (Glassmorphism)
+  // Saat solid (di-scroll), kita gunakan backdrop-blur dan bg-white dengan opacity
   const textColorClass = isSolidNavbar ? "text-travel-dark" : "text-white";
+
   const navBackgroundClass = isSolidNavbar
-    ? "bg-white shadow-md py-4"
+    ? "bg-white/80 backdrop-blur-md shadow-sm py-4 border-b border-white/20" // <--- UPGRADE DI SINI
     : "bg-transparent py-6";
 
   return (
@@ -131,7 +135,7 @@ const Navbar = () => {
 
         {/* MOBILE MENU */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-xl flex flex-col animate-fade-in border-t border-gray-100">
+          <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl flex flex-col animate-fade-in border-t border-gray-100">
             <ul className="flex flex-col text-travel-dark font-medium">
               {[
                 "Home",

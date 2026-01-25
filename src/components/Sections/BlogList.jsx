@@ -1,100 +1,99 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import Image from "next/image"; // Menggunakan Image Next.js sesuai repo awal
 import Link from "next/link";
 import { urlFor } from "@/lib/sanity";
-import { FaClock, FaArrowRight } from "react-icons/fa";
+import { FaClock, FaTag, FaArrowRight } from "react-icons/fa6";
 
 const BlogList = ({ data }) => {
   return (
-    <section className="bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="blog" className="py-20 bg-gray-50">
+      <div className="max-w-[1200px] mx-auto px-4">
+        {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
-            Paket Wisata Populer
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-travel-dark mb-4">
+            Paket Populer
           </h2>
-          <div className="w-20 h-1 bg-travel-pink mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Pilihan destinasi terbaik yang paling diminati oleh para wisatawan.
-            Temukan pengalaman liburan impian Anda di sini.
+          <p className="font-sans text-gray-500 max-w-2xl mx-auto">
+            Pilihan paket wisata terbaik yang paling diminati oleh para
+            traveler. Nikmati pengalaman tak terlupakan bersama kami.
           </p>
         </div>
 
+        {/* Grid Container */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data?.map((item) => (
             <div
               key={item._id}
-              className="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 flex flex-col h-full"
             >
-              {/* === 1. FOTO BISA DIKLIK === */}
-              {/* Dibungkus Link agar mengarah ke detail */}
+              {/* 1. Image Wrapper (RASIO ASLI SESUAI REPO AWAL) */}
               <Link
                 href={`/itinerary/${item.slug}`}
                 className="relative w-full overflow-hidden block cursor-pointer"
               >
-                <Image
-                  src={urlFor(item.image).url()}
-                  alt={item.title}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: "100%", height: "auto" }}
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                {item.image && (
+                  <Image
+                    src={urlFor(item.image).url()}
+                    alt={item.title}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "auto" }} // Mengikuti dimensi asli gambar
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
+                {/* Overlay Badge Harga */}
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-travel-pink shadow-sm flex items-center gap-1 z-10">
+                  <FaTag /> Mulai {item.price}
+                </div>
               </Link>
 
-              {/* Content Section */}
+              {/* 2. Content Body */}
               <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                  <div className="flex items-center gap-1">
-                    <FaClock className="text-travel-pink" />
-                    <span>{item.duration}</span>
-                  </div>
+                {/* Meta Info: Durasi */}
+                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                  <FaClock className="text-travel-pink" />
+                  <span>{item.duration}</span>
                 </div>
 
-                {/* === 2. JUDUL BISA DIKLIK === */}
-                <Link href={`/itinerary/${item.slug}`}>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-travel-pink transition-colors cursor-pointer">
-                    {item.title}
-                  </h3>
-                </Link>
+                {/* Title */}
+                <h3 className="font-serif text-2xl font-bold text-gray-800 mb-3 group-hover:text-travel-pink transition-colors">
+                  <Link href={`/itinerary/${item.slug}`}>{item.title}</Link>
+                </h3>
 
-                <p className="text-gray-600 mb-6 line-clamp-2 flex-grow">
+                {/* Description (Line Clamp 3 Baris agar rapi) */}
+                <p className="font-sans text-gray-600 mb-6 text-sm line-clamp-3 leading-relaxed">
                   {item.description}
                 </p>
 
-                <Link
-                  href={`/itinerary/${item.slug}`}
-                  className="inline-flex items-center gap-2 text-travel-pink font-bold hover:gap-3 transition-all"
-                >
-                  Lihat Detail <FaArrowRight />
-                </Link>
+                {/* Divider Spacer */}
+                <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+                  <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    Termasuk Hotel & Transport
+                  </span>
+
+                  {/* Link Button */}
+                  <Link
+                    href={`/itinerary/${item.slug}`}
+                    className="flex items-center gap-2 text-travel-pink font-semibold text-sm hover:gap-3 transition-all"
+                  >
+                    Lihat Detail <FaArrowRight />
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
         </div>
-        {/* BUTTON LIHAT SEMUA */}
+
+        {/* Tombol Lihat Semua */}
         <div className="text-center mt-12">
           <Link
             href="/packages"
-            className="inline-flex items-center gap-2 bg-black text-white px-10 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all hover:shadow-lg transform hover:scale-105"
+            className="inline-block border-2 border-travel-dark text-travel-dark font-medium px-8 py-3 rounded-full hover:bg-travel-dark hover:text-white transition-all duration-300"
           >
             Lihat Semua Paket
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
           </Link>
         </div>
       </div>
