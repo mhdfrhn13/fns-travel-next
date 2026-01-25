@@ -19,7 +19,6 @@ import "swiper/css/navigation";
 
 const Gallery = ({ data }) => {
   // State untuk menyimpan URL gambar yang dipilih
-  // Kita simpan URL-nya langsung agar lebih mudah dipassing ke Popup
   const [selectedImageSrc, setSelectedImageSrc] = useState(null);
 
   if (!data || data.length === 0) return null;
@@ -41,11 +40,13 @@ const Gallery = ({ data }) => {
           spaceBetween={24}
           slidesPerView={1}
           loop={true}
+          // --- BAGIAN YANG DIUBAH ---
           autoplay={{
-            delay: 4000,
+            delay: 1500,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
+          // --------------------------
           pagination={{
             clickable: true,
             dynamicBullets: true,
@@ -100,7 +101,6 @@ const Gallery = ({ data }) => {
         </Swiper>
 
         {/* 3. Panggil Komponen Popup */}
-        {/* Render hanya jika selectedImageSrc tidak null */}
         {selectedImageSrc && (
           <Popup
             src={selectedImageSrc}

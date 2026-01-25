@@ -5,6 +5,7 @@ import BlogList from "../components/Sections/BlogList";
 import TransportationPreview from "../components/Sections/TransportationPreview";
 import Reveal from "../components/UI/Reveal";
 import { client } from "@/lib/sanity";
+import CustomTripCTA from "@/components/UI/CustomTripCTA";
 
 // Revalidate data setiap 60 detik
 export const revalidate = 60;

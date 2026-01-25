@@ -87,15 +87,6 @@ const TransportationPreview = ({ data }) => {
           ))}
         </div>
 
-        {/* Tombol Mobile Only */}
-        <div className="mt-8 text-center md:hidden">
-          <Link
-            href="/transportation"
-            className="inline-flex items-center gap-2 text-travel-pink font-bold"
-          >
-            Lihat Semua Armada <FaArrowRight />
-          </Link>
-        </div>
         {/* BUTTON LIHAT SEMUA */}
         <div className="text-center mt-12">
           <Link
