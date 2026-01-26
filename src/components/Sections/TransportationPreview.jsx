@@ -11,7 +11,7 @@ const TransportationPreview = ({ data }) => {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div className="max-w-2xl">
-            <span className="text-travel-pink font-bold tracking-wider text-sm uppercase mb-2 block">
+            <span className="text-travel-primary font-bold tracking-wider text-sm uppercase mb-2 block">
               Transportasi Nyaman
             </span>
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-travel-dark">
@@ -24,7 +24,7 @@ const TransportationPreview = ({ data }) => {
           </div>
           <Link
             href="/transportation"
-            className="hidden md:inline-flex items-center font-medium text-travel-dark hover:text-travel-pink transition-colors"
+            className="hidden md:inline-flex items-center font-medium text-travel-dark hover:text-travel-primary transition-colors"
           >
             Lihat Semua Armada &rarr;
           </Link>
@@ -40,7 +40,7 @@ const TransportationPreview = ({ data }) => {
               {/* 1. Image Container */}
               <div className="relative aspect-[16/10] bg-gray-50 rounded-xl overflow-hidden mb-6">
                 {/* Background dekoratif bulat di belakang mobil */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-travel-pink/5 rounded-full blur-2xl group-hover:bg-travel-pink/10 transition-colors"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-travel-primary/5 rounded-full blur-2xl group-hover:bg-travel-primary/10 transition-colors"></div>
 
                 {car.image && (
                   <img
@@ -61,7 +61,7 @@ const TransportationPreview = ({ data }) => {
                     <p className="text-sm text-gray-500">{car.type}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-bold text-travel-pink">
+                    <p className="text-lg font-bold text-travel-primary">
                       {car.price}
                     </p>
                     <p className="text-xs text-gray-400">/ hari</p>
@@ -71,11 +71,11 @@ const TransportationPreview = ({ data }) => {
                 {/* Spesifikasi (Grid Kecil) */}
                 <div className="grid grid-cols-2 gap-3 py-4 border-t border-b border-gray-50">
                   <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <FaUserGroup className="text-travel-pink" />
+                    <FaUserGroup className="text-travel-primary" />
                     <span>{car.capacity} Orang</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <FaCarSide className="text-travel-pink" />
+                    <FaCarSide className="text-travel-primary" />
                     <span>Unit {car.type}</span>
                   </div>
                 </div>
@@ -85,7 +85,7 @@ const TransportationPreview = ({ data }) => {
                   href={`https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20tertarik%20sewa%20mobil%20${car.name}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full text-center py-3 rounded-xl bg-gray-900 text-white font-medium hover:bg-travel-pink transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="block w-full text-center py-3 rounded-xl bg-gray-900 text-white font-medium hover:bg-travel-primary transition-colors duration-300 flex items-center justify-center gap-2"
                 >
                   <FaWhatsapp className="text-lg" /> Sewa Sekarang
                 </a>

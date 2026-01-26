@@ -72,7 +72,7 @@ const GalleryPage = () => {
 
                     {item.location && (
                       <div className="flex items-center gap-2 text-gray-200 text-sm mt-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                        <FaMapMarkerAlt className="text-travel-pink" />
+                        <FaMapMarkerAlt className="text-travel-primary" />
                         <span>{item.location}</span>
                       </div>
                     )}

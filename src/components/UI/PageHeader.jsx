@@ -31,7 +31,7 @@ const PageHeader = ({ title, subtitle, image }) => {
 
         {/* Garis Hiasan Kecil */}
         <div
-          className="w-24 h-1 bg-travel-pink mx-auto mt-6 rounded-full animate-zoom-in"
+          className="w-24 h-1 bg-travel-primary mx-auto mt-6 rounded-full animate-zoom-in"
           style={{ animationDelay: "0.4s" }}
         ></div>
       </div>

@@ -76,14 +76,14 @@ const ContactPage = () => {
           <div className="lg:col-span-1 space-y-8">
             <Reveal direction="left" delay={0.2}>
               {/* Kartu Informasi Kontak */}
-              <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-travel-pink mb-8">
+              <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-travel-primary mb-8">
                 <h3 className="text-2xl font-serif font-bold text-gray-900 mb-6">
                   Kantor Kami
                 </h3>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-travel-pink flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-travel-primary flex-shrink-0">
                       <FaMapMarkerAlt size={20} />
                     </div>
                     <div>
@@ -96,7 +96,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-travel-pink flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-travel-primary flex-shrink-0">
                       <FaPhone size={20} />
                     </div>
                     <div>
@@ -106,7 +106,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-travel-pink flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-travel-primary flex-shrink-0">
                       <FaEnvelope size={20} />
                     </div>
                     <div>
@@ -121,7 +121,7 @@ const ContactPage = () => {
 
               {/* Sosial Media */}
               <div className="bg-gray-900 rounded-2xl shadow-xl p-8 text-white relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-travel-pink/20 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-travel-pink/30 transition-all"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-travel-primary/20 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-travel-primary/30 transition-all"></div>
 
                 <h3 className="text-xl font-bold mb-6 relative z-10">
                   Ikuti Petualangan Kami
@@ -158,7 +158,7 @@ const ContactPage = () => {
           {/* 4. Wrap Kolom Kanan dengan Reveal (Slide dari Kanan) */}
           <div className="lg:col-span-2">
             <Reveal direction="right" delay={0.4}>
-              <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-travel-pink mb-8">
+              <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-travel-primary mb-8">
                 {isSuccess ? (
                   <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in">
                     <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-500 mb-6 shadow-lg">
@@ -173,7 +173,7 @@ const ContactPage = () => {
                     </p>
                     <button
                       onClick={() => setIsSuccess(false)}
-                      className="px-8 py-3 bg-gray-900 text-white rounded-full font-bold hover:bg-travel-pink transition-colors"
+                      className="px-8 py-3 bg-gray-900 text-white rounded-full font-bold hover:bg-travel-primary transition-colors"
                     >
                       Kirim Pesan Lain
                     </button>
@@ -197,7 +197,7 @@ const ContactPage = () => {
                           <input
                             type="text"
                             name="name"
-                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-pink focus:ring-2 focus:ring-travel-pink/20 outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-primary focus:ring-2 focus:ring-travel-primary/20 outline-none transition-all"
                             placeholder="Nama Anda"
                             required
                             disabled={isSubmitting}
@@ -210,7 +210,7 @@ const ContactPage = () => {
                           <input
                             type="email"
                             name="email"
-                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-pink focus:ring-2 focus:ring-travel-pink/20 outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-primary focus:ring-2 focus:ring-travel-primary/20 outline-none transition-all"
                             placeholder="email@contoh.com"
                             required
                             disabled={isSubmitting}
@@ -225,7 +225,7 @@ const ContactPage = () => {
                         <input
                           type="text"
                           name="subject"
-                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-pink focus:ring-2 focus:ring-travel-pink/20 outline-none transition-all"
+                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-primary focus:ring-2 focus:ring-travel-primary/20 outline-none transition-all"
                           placeholder="Tanya Paket Wisata..."
                           required
                           disabled={isSubmitting}
@@ -239,7 +239,7 @@ const ContactPage = () => {
                         <textarea
                           name="message"
                           rows="5"
-                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-pink focus:ring-2 focus:ring-travel-pink/20 outline-none transition-all resize-none"
+                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-travel-primary focus:ring-2 focus:ring-travel-primary/20 outline-none transition-all resize-none"
                           placeholder="Tulis pesan Anda di sini..."
                           required
                           disabled={isSubmitting}
@@ -255,7 +255,7 @@ const ContactPage = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full flex items-center justify-center gap-2 bg-travel-pink text-white font-bold py-4 rounded-xl hover:bg-pink-600 transition-colors shadow-lg shadow-pink-200 transform active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+                        className="w-full flex items-center justify-center gap-2 bg-travel-primary text-white font-bold py-4 rounded-xl hover:bg-pink-600 transition-colors shadow-lg shadow-pink-200 transform active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? (
                           <>

@@ -32,7 +32,7 @@ const CustomTripCTA = () => {
           isVisible ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
         }`}
       >
-        <div className="group relative flex items-center justify-center w-12 h-12 bg-white text-travel-pink rounded-full shadow-lg border-2 border-travel-pink hover:bg-travel-pink hover:text-white transition-colors">
+        <div className="group relative flex items-center justify-center w-12 h-12 bg-white text-travel-primary rounded-full shadow-lg border-2 border-travel-primary hover:bg-travel-primary hover:text-white transition-colors">
           {/* Tooltip Hover */}
           <span className="absolute right-full mr-3 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
             Buat Custom Trip
@@ -50,7 +50,7 @@ const CustomTripCTA = () => {
         isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
       } bottom-4 right-4 md:bottom-8 md:right-8 w-[90%] md:w-auto left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0`}
     >
-      <div className="bg-white p-5 rounded-2xl shadow-2xl border-t-4 border-travel-pink flex flex-col md:flex-row items-center gap-4 md:max-w-md relative animate-fade-in-up">
+      <div className="bg-white p-5 rounded-2xl shadow-2xl border-t-4 border-travel-primary flex flex-col md:flex-row items-center gap-4 md:max-w-md relative animate-fade-in-up">
         {/* Tombol Minimize (-) / Close (X) */}
         <button
           onClick={(e) => {
@@ -65,7 +65,7 @@ const CustomTripCTA = () => {
 
         {/* Icon & Teks */}
         <div className="flex items-center gap-3 text-left">
-          <div className="bg-travel-pink/10 p-3 rounded-full text-travel-pink shrink-0">
+          <div className="bg-travel-primary/10 p-3 rounded-full text-travel-primary shrink-0">
             <FaMapMarkedAlt size={24} />
           </div>
           <div>
@@ -82,7 +82,7 @@ const CustomTripCTA = () => {
         <Link
           href="https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20ingin%20konsultasi%20untuk%20Custom%20Trip..."
           target="_blank"
-          className="bg-travel-pink text-white px-5 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-pink-700 transition-all shadow-lg hover:shadow-pink-200 whitespace-nowrap w-full md:w-auto justify-center"
+          className="bg-travel-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-pink-700 transition-all shadow-lg hover:shadow-pink-200 whitespace-nowrap w-full md:w-auto justify-center"
         >
           <FaWhatsapp size={18} />
           Buat Trip Personal

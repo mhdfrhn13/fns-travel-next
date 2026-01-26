@@ -26,7 +26,7 @@ const Popup = ({ src, onClose }) => {
 
         {/* TOMBOL CLOSE (Diperbaiki Posisinya) */}
         <button
-          className="absolute -top-5 -right-5 md:-top-6 md:-right-6 bg-white text-black hover:bg-travel-pink hover:text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-50 cursor-pointer border-2 border-gray-100"
+          className="absolute -top-5 -right-5 md:-top-6 md:-right-6 bg-white text-black hover:bg-travel-primary hover:text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-50 cursor-pointer border-2 border-gray-100"
           onClick={onClose}
           title="Close"
         >
@@ -48,7 +48,7 @@ const Popup = ({ src, onClose }) => {
         </button>
       </div>
     </div>,
-    document.body // 3. Render langsung ke Body HTML
+    document.body, // 3. Render langsung ke Body HTML
   );
 };
 

@@ -22,7 +22,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <Reveal direction="left">
             <div className="relative group">
-              <div className="absolute -inset-2 bg-travel-pink/20 rounded-2xl transform rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
+              <div className="absolute -inset-2 bg-travel-primary/20 rounded-2xl transform rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
               <img
                 src="/assets/blog1.jpg"
                 alt="Tentang FnS Travel"

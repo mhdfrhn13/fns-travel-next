@@ -63,31 +63,31 @@ const Footer = () => {
 
           {/* KOLOM 2: KONTAK */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6 border-b-2 border-travel-pink pb-2 inline-block">
+            <h4 className="text-lg font-bold text-white mb-6 border-b-2 border-travel-primary pb-2 inline-block">
               Hubungi Kami
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-gray-400">
-                <FaMapMarkerAlt className="text-travel-pink mt-1 flex-shrink-0" />
+                <FaMapMarkerAlt className="text-travel-primary mt-1 flex-shrink-0" />
                 <span>
                   Jl. Kirab Remaja No.32, Puhun Tembok, Bukittinggi, Sumatera
                   Barat
                 </span>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
-                <FaPhone className="text-travel-pink flex-shrink-0" />
+                <FaPhone className="text-travel-primary flex-shrink-0" />
                 <a
                   href="https://wa.me/6285365968845"
-                  className="hover:text-travel-pink transition-colors"
+                  className="hover:text-travel-primary transition-colors"
                 >
                   +62 853-6596-8845
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
-                <FaEnvelope className="text-travel-pink flex-shrink-0" />
+                <FaEnvelope className="text-travel-primary flex-shrink-0" />
                 <a
                   href="mailto:fnsholiday@gmail.com"
-                  className="hover:text-travel-pink transition-colors"
+                  className="hover:text-travel-primary transition-colors"
                 >
                   fnsholiday@gmail.com
                 </a>
@@ -97,7 +97,7 @@ const Footer = () => {
 
           {/* KOLOM 3: TAUTAN CEPAT (LENGKAP) */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6 border-b-2 border-travel-pink pb-2 inline-block">
+            <h4 className="text-lg font-bold text-white mb-6 border-b-2 border-travel-primary pb-2 inline-block">
               Tautan Cepat
             </h4>
             <ul className="space-y-3">
@@ -112,9 +112,9 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     href={item.link}
-                    className="flex items-center gap-2 text-gray-400 hover:text-travel-pink hover:translate-x-2 transition-all duration-300 group"
+                    className="flex items-center gap-2 text-gray-400 hover:text-travel-primary hover:translate-x-2 transition-all duration-300 group"
                   >
-                    <FaChevronRight className="text-xs text-gray-600 group-hover:text-travel-pink transition-colors" />
+                    <FaChevronRight className="text-xs text-gray-600 group-hover:text-travel-primary transition-colors" />
                     {item.name}
                   </Link>
                 </li>

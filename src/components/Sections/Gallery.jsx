@@ -1,132 +1,100 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
-import { FaMapMarkerAlt } from "react-icons/fa";
-
-// 1. Import komponen Popup yang baru
 import Popup from "../UI/Popup";
 
-// Import Swiper & Modules
+// Import Swiper untuk Carousel Mobile
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-
-// Import Styles
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 const Gallery = ({ data }) => {
-  // State untuk menyimpan URL gambar yang dipilih
-  const [selectedImageSrc, setSelectedImageSrc] = useState(null);
-
-  if (!data || data.length === 0) return null;
+  const [selectedImg, setSelectedImg] = useState(null);
 
   return (
-    <section className="py-20 bg-gray-50" id="gallery">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="py-20 bg-white">
+      <div className="max-w-[1200px] mx-auto px-4">
         {/* Header Section */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
-            Galeri Perjalanan
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-travel-dark mb-4">
+            Gallery Keindahan
           </h2>
-          <div className="w-20 h-1 bg-travel-pink mx-auto rounded-full"></div>
+          <p className="font-sans text-gray-600 max-w-2xl mx-auto">
+            Potret momen tak terlupakan dari berbagai destinasi eksklusif kami.
+          </p>
         </div>
 
-        {/* Swiper Carousel */}
-        <Swiper
-          modules={[Autoplay, Pagination, Navigation]}
-          spaceBetween={24}
-          slidesPerView={1}
-          loop={true}
-          // --- BAGIAN YANG DIUBAH ---
-          autoplay={{
-            delay: 1500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          // --------------------------
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          navigation={true}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          className="pb-12 px-4"
-        >
-          {data.map((item) => (
-            <SwiperSlide key={item._id} className="h-auto pb-2">
-              <div
-                // 2. Saat diklik, set URL gambar resolusi tinggi ke state
-                onClick={() =>
-                  setSelectedImageSrc(urlFor(item.image).width(1200).url())
-                }
-                className="relative group rounded-xl overflow-hidden shadow-lg h-96 w-full cursor-pointer"
-                role="button"
-              >
-                {/* Gambar Thumbnail */}
-                <Image
-                  src={urlFor(item.image).width(600).height(800).url()}
-                  alt={item.title || "Gallery"}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-
-                {/* Overlay & Content */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-                <div className="absolute bottom-0 left-0 p-5 w-full text-white pointer-events-none">
-                  {item.category && (
-                    <span className="text-xs font-bold bg-travel-pink px-2 py-1 rounded text-white mb-2 inline-block">
-                      {item.category}
-                    </span>
-                  )}
-                  <h3 className="text-xl font-bold mb-1 truncate">
-                    {item.title}
-                  </h3>
-                  {item.location && (
-                    <div className="flex items-center gap-2 text-sm text-gray-200">
-                      <FaMapMarkerAlt className="text-travel-pink flex-shrink-0" />
-                      <span className="truncate">{item.location}</span>
-                    </div>
-                  )}
+        {/* --- TAMPILAN MOBILE: CAROUSEL (Muncul hanya di layar < md) --- */}
+        <div className="block md:hidden">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={16}
+            slidesPerView={1.2}
+            centeredSlides={true}
+            loop={true}
+            autoplay={{ delay: 3000 }}
+            pagination={{ clickable: true }}
+            className="pb-12"
+          >
+            {data?.map((item) => (
+              <SwiperSlide key={item._id}>
+                <div
+                  className="relative h-[400px] rounded-2xl overflow-hidden shadow-lg"
+                  onClick={() => setSelectedImg(urlFor(item.image).url())}
+                >
+                  <img
+                    src={urlFor(item.image).url()}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+                    <p className="text-travel-gold text-xs uppercase tracking-widest">
+                      {item.location}
+                    </p>
+                    <h3 className="text-white font-serif text-lg font-bold">
+                      {item.title}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-        {/* 3. Panggil Komponen Popup */}
-        {selectedImageSrc && (
-          <Popup
-            src={selectedImageSrc}
-            onClose={() => setSelectedImageSrc(null)}
-          />
-        )}
+        {/* --- TAMPILAN DESKTOP: BENTO GRID (Muncul hanya di layar >= md) --- */}
+        <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-4 h-[600px]">
+          {data?.map((item, index) => (
+            <div
+              key={item._id}
+              onClick={() => setSelectedImg(urlFor(item.image).url())}
+              className={`relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg
+                ${index === 0 ? "col-span-2 row-span-2" : ""} 
+                ${index === 1 ? "col-span-2 row-span-1" : ""}
+                ${index >= 2 ? "col-span-1 row-span-1" : ""}
+              `}
+            >
+              <img
+                src={urlFor(item.image).url()}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <span className="text-travel-gold text-xs uppercase tracking-widest mb-1">
+                  {item.location}
+                </span>
+                <h3 className="text-white font-serif text-xl font-bold">
+                  {item.title}
+                </h3>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Style Navigasi Swiper */}
-      <style jsx global>{`
-        .swiper-pagination-bullet-active {
-          background-color: #f43f5e !important;
-        }
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: white !important;
-          background: rgba(0, 0, 0, 0.3);
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-        }
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-          background: #f43f5e;
-        }
-      `}</style>
+      {/* Popup tetap bisa digunakan di Mobile maupun Desktop */}
+      <Popup src={selectedImg} onClose={() => setSelectedImg(null)} />
     </section>
   );
 };

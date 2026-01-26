@@ -3,17 +3,19 @@
 @theme {
   /* --- 1. KONFIGURASI WARNA (Bisa Anda ganti kode HEX-nya) --- */
 
-  /* Biru Gelap - Profesional & Elegan */
-  --color-travel-dark: #0f172a;
+  /* Warna Gelap (Deep Green) */
+  --color-travel-dark: #064e3b;
 
-  /* Emas/Kuning Redup - Mewah */
-  --color-travel-gold: #c5a059;
+  /* Warna Aksen (Amber) */
+  --color-travel-gold: #f59e0b;
 
-  /* Warna Aksen untuk Interaksi (Biru Royal) Warna Utama*/
-  --color-travel-pink: #1e40af;
+  /* Warna Utama (Emerald Green) */
+  --color-travel-primary: #059669;
+  /* Tambahkan warna Teal untuk pasangan gradien */
+  --color-travel-teal: #0d9488;
 
-  /* Latar Belakang (Abu-abu sangat muda agar biru terlihat menonjol) */
-  --color-bg-soft: #f8fafc;
+  /* Latar Belakang (Soft Mint/White) */
+  --color-bg-soft: #f0fdf4;
 
   /* --- 2. KONFIGURASI FONT (Otomatis ambil dari layout.js) --- */
   --font-serif: var(--font-serif); /* Playfair Display */
@@ -25,6 +27,9 @@
 @layer utilities {
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  .skeleton {
+    @apply bg-gray-200 animate-pulse rounded-2xl;
   }
 }
 

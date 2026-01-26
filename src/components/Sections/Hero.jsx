@@ -39,7 +39,7 @@ const Hero = () => {
         {/* Tombol dengan Efek Tekan (active:scale-95) */}
         <a
           href="#blog"
-          className="inline-block font-sans font-medium bg-travel-pink text-white px-10 py-4 rounded-full hover:bg-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-sm md:text-base tracking-widest"
+          className="inline-block font-sans font-medium bg-travel-primary text-white px-10 py-4 rounded-full hover:bg-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-sm md:text-base tracking-widest"
         >
           EXPLORE MORE
         </a>

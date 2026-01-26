@@ -87,14 +87,14 @@ const Navbar = () => {
                         ? "/contact"
                         : `/${item.toLowerCase()}`
                   }
-                  className="hover:text-travel-pink transition-colors duration-300"
+                  className="hover:text-travel-primary transition-colors duration-300"
                 >
                   {item}
                 </Link>
               ) : (
                 <Link
                   href={`/#${item.toLowerCase().replace(" ", "")}`}
-                  className="hover:text-travel-pink transition-colors duration-300"
+                  className="hover:text-travel-primary transition-colors duration-300"
                 >
                   {item}
                 </Link>
@@ -161,7 +161,7 @@ const Navbar = () => {
                             ? "/contact"
                             : `/${item.toLowerCase()}`
                       }
-                      className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-pink transition"
+                      className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-primary transition"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item}
@@ -169,7 +169,7 @@ const Navbar = () => {
                   ) : (
                     <Link
                       href={`/#${item.toLowerCase().replace(" ", "")}`}
-                      className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-pink transition"
+                      className="block py-4 px-6 hover:bg-gray-50 hover:text-travel-primary transition"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item}

@@ -54,7 +54,7 @@ const Transportation = async () => {
 
                   {/* Kapasitas */}
                   <div className="flex items-center gap-2 text-gray-500 text-sm mb-4 font-medium">
-                    <FaUserFriends className="text-travel-pink" />
+                    <FaUserFriends className="text-travel-primary" />
                     <span>{car.capacity}</span>
                   </div>
 

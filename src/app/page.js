@@ -13,7 +13,7 @@ export const revalidate = 60;
 // Fungsi Fetch Data (Gallery, Packages, Cars)
 async function getHomeData() {
   const query = `{
-    "gallery": *[_type == "gallery"] | order(_createdAt desc)[0...5] { // <--- UBAH JADI 5 (0...5 mengambil index 0 s/d 4)
+    "gallery": *[_type == "gallery"] | order(_createdAt desc)[0...8] { // <--- UBAH JADI 5 (0...5 mengambil index 0 s/d 4)
       _id,
       image,
       title,
@@ -58,7 +58,7 @@ const Home = async () => {
 
       {/* 4. GALLERY SECTION (Carousel) */}
       {/* Reveal dihapus atau disesuaikan karena Carousel sudah punya animasi sendiri, tapi tetap pakai Reveal boleh */}
-      <Reveal direction="left">
+      <Reveal direction="up">
         <Gallery data={gallery} />
       </Reveal>
 

@@ -62,7 +62,7 @@ const PackagesPage = async () => {
                     )}
 
                     {/* Badge Harga Modern (Pojok Kanan Atas) */}
-                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-travel-pink shadow-sm flex items-center gap-1 z-10">
+                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-travel-primary shadow-sm flex items-center gap-1 z-10">
                       <FaTag /> Mulai {pkg.price}
                     </div>
                   </Link>
@@ -71,13 +71,13 @@ const PackagesPage = async () => {
                   <div className="p-6 flex flex-col flex-grow">
                     {/* Meta Info: Durasi */}
                     <div className="flex items-center gap-2 text-sm text-gray-500 mb-3 font-medium">
-                      <FaClock className="text-travel-pink" />
+                      <FaClock className="text-travel-primary" />
                       <span>{pkg.duration}</span>
                     </div>
 
                     {/* Judul */}
                     <Link href={`/itinerary/${pkg.slug}`}>
-                      <h3 className="font-serif text-2xl font-bold text-gray-900 mb-3 group-hover:text-travel-pink transition-colors cursor-pointer">
+                      <h3 className="font-serif text-2xl font-bold text-gray-900 mb-3 group-hover:text-travel-primary transition-colors cursor-pointer">
                         {pkg.title}
                       </h3>
                     </Link>
@@ -95,7 +95,7 @@ const PackagesPage = async () => {
 
                       <Link
                         href={`/itinerary/${pkg.slug}`}
-                        className="flex items-center gap-2 text-travel-pink font-semibold text-sm hover:gap-3 transition-all"
+                        className="flex items-center gap-2 text-travel-primary font-semibold text-sm hover:gap-3 transition-all"
                       >
                         Lihat Detail <FaArrowRight />
                       </Link>

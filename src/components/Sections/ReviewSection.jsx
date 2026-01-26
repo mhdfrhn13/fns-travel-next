@@ -83,7 +83,7 @@ const ReviewSection = ({ packageId, existingReviews }) => {
                 <input
                   required
                   type="text"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-travel-pink focus:outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-travel-primary focus:outline-none"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
@@ -120,7 +120,7 @@ const ReviewSection = ({ packageId, existingReviews }) => {
                 <textarea
                   required
                   rows="3"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-travel-pink focus:outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-travel-primary focus:outline-none"
                   value={formData.comment}
                   onChange={(e) =>
                     setFormData({ ...formData, comment: e.target.value })

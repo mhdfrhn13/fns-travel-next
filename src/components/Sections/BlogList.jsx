@@ -45,7 +45,7 @@ const BlogList = ({ data }) => {
                   />
                 )}
                 {/* Overlay Badge Harga */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-travel-pink shadow-sm flex items-center gap-1 z-10">
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-travel-primary shadow-sm flex items-center gap-1 z-10">
                   <FaTag /> Mulai {item.price}
                 </div>
               </Link>
@@ -54,12 +54,12 @@ const BlogList = ({ data }) => {
               <div className="p-6 flex flex-col flex-grow">
                 {/* Meta Info: Durasi */}
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <FaClock className="text-travel-pink" />
+                  <FaClock className="text-travel-primary" />
                   <span>{item.duration}</span>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-2xl font-bold text-gray-800 mb-3 group-hover:text-travel-pink transition-colors">
+                <h3 className="font-serif text-2xl font-bold text-gray-800 mb-3 group-hover:text-travel-primary transition-colors">
                   <Link href={`/itinerary/${item.slug}`}>{item.title}</Link>
                 </h3>
 
@@ -77,7 +77,7 @@ const BlogList = ({ data }) => {
                   {/* Link Button */}
                   <Link
                     href={`/itinerary/${item.slug}`}
-                    className="flex items-center gap-2 text-travel-pink font-semibold text-sm hover:gap-3 transition-all"
+                    className="flex items-center gap-2 text-travel-primary font-semibold text-sm hover:gap-3 transition-all"
                   >
                     Lihat Detail <FaArrowRight />
                   </Link>

@@ -10,7 +10,7 @@ const About = () => {
         <div className="max-w-[1200px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-auto">
           {/* KOLOM KIRI: TEKS ABOUT US */}
           <div className="p-4 md:p-8 flex flex-col justify-center bg-white">
-            <h3 className="text-3xl font-bold border-b-4 border-travel-pink inline-block pb-2 mb-6 self-start">
+            <h3 className="text-3xl font-bold border-b-4 border-travel-primary inline-block pb-2 mb-6 self-start">
               About Us
             </h3>
             <p className="text-gray-500 italic text-lg mb-6">

@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="id">
       {/* 4. Masukkan variabel font ke body */}
       <body
-        className={`${playfair.variable} ${poppins.variable} antialiased font-sans bg-gray-50 text-gray-800`}
+        className={`${playfair.variable} ${poppins.variable} antialiased font-sans bg-bg-soft text-gray-800`}
       >
         <Navbar />
         <main className="min-h-screen">{children}</main>
