@@ -50,6 +50,48 @@ async function getItinerary(slug) {
   return data;
 }
 
+// 2. Fungsi Generate Metadata untuk SEO & Share Link
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const data = await getItinerary(slug);
+
+  if (!data) {
+    return {
+      title: "Paket Tidak Ditemukan | FnS Travel",
+      description: "Mohon maaf, paket wisata yang Anda cari tidak tersedia.",
+    };
+  }
+
+  // Ambil URL gambar untuk Open Graph (Ukuran rekomendasi 1200x630)
+  const ogImage = data.image
+    ? urlFor(data.image).width(1200).height(630).url()
+    : "/assets/lembah-harau.webp"; // Fallback image jika tidak ada foto
+
+  return {
+    title: `${data.title} | FnS Travel`,
+    description: data.description
+      ? data.description.substring(0, 160) + "..." // Potong deskripsi agar pas di Google
+      : `Nikmati perjalanan seru ${data.title} bersama FnS Travel. Booking sekarang!`,
+    openGraph: {
+      title: data.title,
+      description: data.description
+        ? data.description.substring(0, 160)
+        : "Agen perjalanan wisata terbaik di Sumatera Barat.",
+      url: `https://fnstravel.com/itinerary/${slug}`, // Sesuaikan dengan domain asli Anda nanti
+      siteName: "FnS Travel",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: data.title,
+        },
+      ],
+      type: "website",
+    },
+  };
+}
+
 // 2. Komponen Utama
 const ItineraryDetail = async ({ params }) => {
   const { slug } = await params;
@@ -77,7 +119,7 @@ const ItineraryDetail = async ({ params }) => {
             {/* 1. Deskripsi & Highlight */}
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <FaMapMarkerAlt className="text-travel-primary" />
+                <FaMapMarkerAlt className="text-travel-pink" />
                 Tentang Destinasi
               </h2>
               <p className="text-gray-600 leading-relaxed whitespace-pre-line text-justify">
@@ -88,7 +130,7 @@ const ItineraryDetail = async ({ params }) => {
             {/* 2. Itinerary Harian (Timeline) */}
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 flex items-center gap-2">
-                <FaCalendarAlt className="text-travel-primary" />
+                <FaCalendarAlt className="text-travel-pink" />
                 Rencana Perjalanan
               </h2>
 
@@ -98,11 +140,11 @@ const ItineraryDetail = async ({ params }) => {
                     <div className="relative flex items-start group">
                       {/* Bullet Point Timeline */}
                       <div className="absolute left-0 ml-5 -translate-x-1/2 md:translate-x-0 top-0 mt-1">
-                        <div className="w-4 h-4 rounded-full bg-travel-primary border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+                        <div className="w-4 h-4 rounded-full bg-travel-pink border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
                       </div>
 
                       <div className="ml-12 w-full">
-                        <span className="text-xs font-bold text-travel-primary uppercase tracking-wider mb-1 block">
+                        <span className="text-xs font-bold text-travel-pink uppercase tracking-wider mb-1 block">
                           Hari Ke-{day.day}
                         </span>
                         <h3 className="text-xl font-bold text-gray-800 mb-4">
@@ -171,7 +213,7 @@ const ItineraryDetail = async ({ params }) => {
             <div className="sticky top-24 space-y-6">
               {/* Card Harga & Booking */}
               <Reveal direction="left" delay={0.2}>
-                <div className="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-travel-primary">
+                <div className="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-travel-pink">
                   <div className="flex items-center gap-2 text-gray-500 mb-2">
                     <FaClock />
                     <span className="text-sm font-medium">{data.duration}</span>
