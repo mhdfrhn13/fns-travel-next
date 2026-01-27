@@ -24,7 +24,7 @@ export default function AboutPage() {
             <div className="relative group">
               <div className="absolute -inset-2 bg-travel-primary/20 rounded-2xl transform rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
               <img
-                src="/assets/blog1.jpg"
+                src="/assets/logo-bg.png"
                 alt="Tentang FnS Travel"
                 className="relative w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow-xl z-10"
               />

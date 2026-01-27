@@ -4,18 +4,19 @@
   /* --- 1. KONFIGURASI WARNA (Bisa Anda ganti kode HEX-nya) --- */
 
   /* Warna Gelap (Deep Green) */
-  --color-travel-dark: #064e3b;
+  --color-travel-dark: #1a1a1a;
 
   /* Warna Aksen (Amber) */
-  --color-travel-gold: #f59e0b;
+  --color-travel-gold: #fbbf24;
 
   /* Warna Utama (Emerald Green) */
-  --color-travel-primary: #059669;
-  /* Tambahkan warna Teal untuk pasangan gradien */
-  --color-travel-teal: #0d9488;
+  --color-travel-primary: #dc2626;
+
+  --color-travel-primary-hover: #b91c1c; /* Red-700 */
+  --color-travel-grey: #525252;
 
   /* Latar Belakang (Soft Mint/White) */
-  --color-bg-soft: #f0fdf4;
+  --color-bg-soft: #fafafa;
 
   /* --- 2. KONFIGURASI FONT (Otomatis ambil dari layout.js) --- */
   --font-serif: var(--font-serif); /* Playfair Display */

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -54,11 +55,21 @@ const Navbar = () => {
         <Link
           href="/"
           onClick={handleLogoClick}
-          className={`font-serif text-3xl font-bold tracking-tighter cursor-pointer ${textColorClass}`}
+          className="relative h-10 w-36 md:h-12 md:w-48 cursor-pointer transition-all duration-300" // Atur ukuran container logo di sini (h-8 = 32px, w-32 = 128px)
         >
-          travel
+          <Image
+            src={
+              isSolidNavbar
+                ? "/assets/logo-utama-black.png"
+                : "/assets/logo-utama-white.png"
+            }
+            alt="Travel Logo"
+            fill
+            className="object-contain object-left" // object-left agar logo rata kiri
+            priority // Penting agar logo langsung muncul tanpa loading
+            sizes="((max-width: 768px) 144px, 192px"
+          />
         </Link>
-
         {/* DESKTOP MENU */}
         <ul
           className={`hidden md:flex gap-8 font-sans font-medium text-sm tracking-wide ${textColorClass}`}
