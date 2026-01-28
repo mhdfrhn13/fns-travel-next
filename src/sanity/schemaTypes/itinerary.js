@@ -5,6 +5,19 @@ export default {
   fields: [
     { name: "title", title: "Judul Paket", type: "string" },
     {
+      name: "region",
+      title: "Wilayah",
+      type: "string",
+      options: {
+        list: [
+          { title: "Sumatra", value: "sumatra" },
+          { title: "Jawa dan Bali", value: "jawa-bali" },
+          { title: "Lainnya", value: "lainnya" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "slug",
       title: "Slug URL",
       type: "slug",
