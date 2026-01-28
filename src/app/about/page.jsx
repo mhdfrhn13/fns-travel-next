@@ -37,27 +37,32 @@ export default function AboutPage() {
                 <strong className="text-travel-dark text-xl">
                   FnS Tour and Travel
                 </strong>{" "}
-                adalah penyedia jasa perjalanan wisata dan rental kendaraan
-                terpercaya yang berlokasi di Sumatera Barat. Berdiri dengan
-                semangat untuk memperkenalkan keindahan alam Nusantara, kami
-                telah melayani ribuan wisatawan domestik maupun mancanegara.
+                adalah penyedia layanan perjalanan dan transportasi yang
+                berdedikasi untuk menghadirkan pengalaman jelajah yang bermakna
+                bagi setiap wisatawan. Kami percaya bahwa setiap perjalanan
+                bukan sekadar perpindahan tempat, melainkan momen untuk
+                menciptakan kenangan baru yang berkesan, aman, dan nyaman.
+                Berfokus pada keindahan alam dan kekayaan budaya lokal, kami
+                hadir sebagai mitra perjalanan yang siap menemani setiap langkah
+                eksplorasi Anda.
               </p>
 
               <p>
-                Bermula dari layanan transportasi sederhana, kini kami
-                berkembang menjadi agen perjalanan komprehensif. Kami menyajikan
-                paket-paket wisata yang dirancang secara apik guna memenuhi
-                kepuasan pelanggan, mulai dari wisata alam, budaya, hingga
-                kuliner.
+                Layanan kami dirancang secara fleksibel untuk memenuhi berbagai
+                kebutuhan, mulai dari paket wisata yang terencana dengan baik
+                hingga penyewaan armada kendaraan yang prima untuk keperluan
+                pribadi, keluarga, maupun instansi. Dengan dukungan tim yang
+                profesional dan mengenal medan dengan baik, kami berkomitmen
+                untuk memberikan pelayanan yang tulus dan berkualitas demi
+                kepuasan pelanggan yang menjadi prioritas utama kami.
               </p>
 
               <p>
-                Selain paket wisata,{" "}
-                <strong className="text-travel-dark">FnS Tour</strong> juga
-                menawarkan layanan sewa mobil untuk keperluan dinas, kunjungan
-                kerja, gathering keluarga, hingga private tour. Armada kami
-                selalu dalam kondisi prima, bersih, dan didukung oleh kru yang
-                ramah serta berpengalaman.
+                <strong className="text-travel-dark italic">
+                  "Jelajahi setiap sudut destinasi dengan kenyamanan tanpa
+                  batas. Mari temukan makna liburan yang sesungguhnya bersama
+                  kami!"
+                </strong>{" "}
               </p>
             </div>
           </Reveal>

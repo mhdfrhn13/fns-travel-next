@@ -105,7 +105,7 @@ const Footer = () => {
                 { name: "Beranda", link: "/" },
                 { name: "Tentang Kami", link: "/about" },
                 { name: "Paket Wisata", link: "/packages" },
-                { name: "Armada", link: "/transportation" },
+                { name: "Transportasi", link: "/transportation" },
                 { name: "Galeri", link: "/gallery" },
                 { name: "Kontak", link: "/contact" },
               ].map((item, index) => (

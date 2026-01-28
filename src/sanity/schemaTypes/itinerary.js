@@ -5,6 +5,12 @@ export default {
   fields: [
     { name: "title", title: "Judul Paket", type: "string" },
     {
+      name: "isFeatured",
+      title: "Tampilkan di Home",
+      type: "boolean",
+      initialValue: false,
+    },
+    {
       name: "region",
       title: "Wilayah",
       type: "string",

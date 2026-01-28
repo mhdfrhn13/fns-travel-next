@@ -20,7 +20,7 @@ async function getHomeData() {
       location,
       category
     },
-    "packages": *[_type == "itinerary"] | order(_createdAt desc)[0...3] {
+    "packages": *[_type == "itinerary" && isFeatured == true] | order(_createdAt desc)[0...3]{
       _id,
       title,
       "slug": slug.current,

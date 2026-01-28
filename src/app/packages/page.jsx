@@ -107,19 +107,19 @@ const PackagesContent = () => {
               <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 flex flex-col h-full">
                 <Link
                   href={`/itinerary/${pkg.slug}`}
-                  className="relative w-full overflow-hidden block aspect-[4/3]"
+                  className="relative w-full overflow-hidden block cursor-pointer"
                 >
                   {pkg.image && (
                     <Image
                       src={urlFor(pkg.image).url()}
                       alt={pkg.title}
-                      fill
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: "100%", height: "auto" }} // Mengikuti dimensi asli gambar
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   )}
-                  <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-travel-primary z-10">
-                    <FaTag className="inline mr-1" /> Mulai {pkg.price}
-                  </div>
                 </Link>
 
                 <div className="p-6 flex flex-col flex-grow">
@@ -136,8 +136,8 @@ const PackagesContent = () => {
                     {pkg.description}
                   </p>
                   <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
-                    <span className="text-xs font-semibold text-gray-400 uppercase">
-                      All Inclusive
+                    <span className="text-sm font-bold text-travel-primary">
+                      {pkg.price}
                     </span>
                     <Link
                       href={`/itinerary/${pkg.slug}`}

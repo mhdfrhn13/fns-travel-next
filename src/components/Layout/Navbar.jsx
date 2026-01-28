@@ -89,12 +89,16 @@ const Navbar = () => {
             onMouseEnter={() => setIsPackagesOpen(true)}
             onMouseLeave={() => setIsPackagesOpen(false)}
           >
-            <button className="flex items-center gap-1 hover:text-travel-primary transition py-2 uppercase text-sm tracking-wider">
-              Packages{" "}
+            {/* Ganti baris 98-105 pada Navbar.jsx */}
+            <Link
+              href="/packages"
+              className="flex items-center gap-1 hover:text-travel-primary transition py-2 uppercase text-sm tracking-wider"
+            >
+              Paket Wisata{" "}
               <FaChevronDown
                 className={`text-xs transition-transform duration-300 ${isPackagesOpen ? "rotate-180" : ""}`}
               />
-            </button>
+            </Link>
 
             <div
               className={`absolute top-full left-0 w-52 bg-white shadow-xl rounded-xl py-3 border border-gray-100 transition-all duration-300 ${
@@ -127,7 +131,7 @@ const Navbar = () => {
               href="/transportation"
               className="hover:text-travel-primary transition uppercase text-sm tracking-wider"
             >
-              Transportation
+              Transportasi
             </Link>
           </li>
 
@@ -137,7 +141,7 @@ const Navbar = () => {
               href="/gallery"
               className="hover:text-travel-primary transition uppercase text-sm tracking-wider"
             >
-              Gallery
+              Galeri
             </Link>
           </li>
 
@@ -147,7 +151,7 @@ const Navbar = () => {
               href="/contact"
               className="hover:text-travel-primary transition uppercase text-sm tracking-wider"
             >
-              Contact
+              Kontak
             </Link>
           </li>
         </ul>
@@ -194,7 +198,7 @@ const Navbar = () => {
               className="flex justify-between items-center w-full py-3 px-8 text-left hover:bg-gray-50"
               onClick={() => setIsPackagesOpen(!isPackagesOpen)}
             >
-              Packages{" "}
+              Paket Wisata{" "}
               <FaChevronDown
                 className={`transition-transform duration-300 ${isPackagesOpen ? "rotate-180" : ""}`}
               />
@@ -228,7 +232,7 @@ const Navbar = () => {
               className="block py-3 px-8 hover:bg-gray-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Transportation
+              Transportasi
             </Link>
           </li>
 
@@ -238,7 +242,7 @@ const Navbar = () => {
               className="block py-3 px-8 hover:bg-gray-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Gallery
+              Galeri
             </Link>
           </li>
 
@@ -248,7 +252,7 @@ const Navbar = () => {
               className="block py-3 px-8 hover:bg-gray-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Contact
+              Kontak
             </Link>
           </li>
         </ul>
