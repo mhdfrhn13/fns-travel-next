@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { urlFor } from "@/lib/sanity";
 import { FaUserGroup, FaCarSide, FaWhatsapp } from "react-icons/fa6";
+import { getWhatsAppLink } from "@/lib/utils";
+import { WA_MESSAGES } from "@/lib/constants";
 
 const TransportationPreview = ({ data }) => {
   return (
@@ -82,7 +84,7 @@ const TransportationPreview = ({ data }) => {
 
                 {/* Action Button */}
                 <a
-                  href={`https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20tertarik%20sewa%20mobil%20${car.name}`}
+                  href={getWhatsAppLink(WA_MESSAGES.carBooking(car.name))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-3 rounded-xl bg-gray-900 text-white font-medium hover:bg-travel-primary transition-colors duration-300 flex items-center justify-center gap-2"

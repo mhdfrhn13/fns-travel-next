@@ -20,6 +20,8 @@ import {
   IoWarningOutline,
   IoCheckmarkCircleOutline,
 } from "react-icons/io5";
+import { getWhatsAppLink } from "@/lib/utils";
+import { WA_MESSAGES } from "@/lib/constants";
 
 // 1. Fungsi Fetch Data Detail
 async function getItinerary(slug) {
@@ -229,7 +231,9 @@ const ItineraryDetail = async ({ params }) => {
                   </div>
 
                   <Link
-                    href={`https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20tertarik%20dengan%20paket%20wisata%20${data.title}`}
+                    href={getWhatsAppLink(
+                      WA_MESSAGES.packageBooking(data.title),
+                    )}
                     target="_blank"
                     className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg hover:shadow-green-200 transform hover:-translate-y-1"
                   >

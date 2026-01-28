@@ -8,6 +8,8 @@ import {
   FaMapMarkedAlt,
   FaPenFancy,
 } from "react-icons/fa";
+import { getWhatsAppLink } from "@/lib/utils";
+import { WA_MESSAGES } from "@/lib/constants";
 
 const CustomTripCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -80,7 +82,7 @@ const CustomTripCTA = () => {
 
         {/* Tombol CTA */}
         <Link
-          href="https://wa.me/6281234567890?text=Halo%20FnS%20Travel,%20saya%20ingin%20konsultasi%20untuk%20Custom%20Trip..."
+          href={getWhatsAppLink(WA_MESSAGES.customTrip)}
           target="_blank"
           className="bg-travel-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-pink-700 transition-all shadow-lg hover:shadow-pink-200 whitespace-nowrap w-full md:w-auto justify-center"
         >

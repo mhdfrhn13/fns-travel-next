@@ -1,6 +1,8 @@
 import "./globals.css";
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
+import { getWhatsAppLink } from "@/lib/utils";
+import { WA_MESSAGES } from "@/lib/constants";
 
 // 1. Import Font dari Google (Playfair Display & Poppins)
 import { Playfair_Display, Poppins } from "next/font/google";
@@ -37,7 +39,7 @@ export default function RootLayout({ children }) {
         <Footer />
         {/* Floating WA Button */}
         <a
-          href="https://wa.me/6281234567890"
+          href={getWhatsAppLink(WA_MESSAGES.general)}
           target="_blank"
           className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all flex items-center gap-2"
         >
