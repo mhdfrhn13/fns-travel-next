@@ -18,7 +18,7 @@ const Hero = () => {
     >
       {/* 1. LAYER VIDEO BACKGROUND */}
       {/* UPGRADE: Menggunakan Gradient Overlay (Atas Gelap -> Tengah Bening -> Bawah Gelap) */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/60 via-transparent to-black/90 z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full  z-10"></div>
 
       <video
         autoPlay
