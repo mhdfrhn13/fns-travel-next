@@ -63,9 +63,11 @@ const Home = async () => {
       </Reveal>
 
       {/* 5. PAKET POPULER (BlogList) */}
-      <Reveal direction="right">
-        <BlogList data={packages} />
-      </Reveal>
+      <div id="packages">
+        <Reveal direction="right">
+          <BlogList data={packages} />
+        </Reveal>
+      </div>
 
       {/* 6. ARMADA KAMI (TransportationPreview) */}
       <Reveal direction="up">
