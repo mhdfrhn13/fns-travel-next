@@ -14,6 +14,17 @@ const Navbar = () => {
 
   const isHomePage = pathname === "/";
 
+  const handleHomeClick = (e) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      setIsMobileMenuOpen(false); // Tutup menu jika di mobile
+    }
+  };
+
   // Data Wilayah untuk Dropdown Packages
   const regions = [
     { title: "Sumatra", slug: "sumatra" },
@@ -43,7 +54,7 @@ const Navbar = () => {
         <Link
           href="/"
           className="relative w-44 h-14 transition-transform duration-300 hover:scale-105"
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={handleHomeClick}
         >
           <Image
             src={
@@ -67,6 +78,7 @@ const Navbar = () => {
           <li>
             <Link
               href="/"
+              onClick={handleHomeClick}
               className="hover:text-travel-primary transition uppercase text-sm tracking-wider"
             >
               Home
