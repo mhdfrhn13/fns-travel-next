@@ -27,7 +27,7 @@ const Hero = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/assets/video-sumatra.mp4" type="video/mp4" />
+        <source src="/assets/video-sumatra-2.mp4" type="video/mp4" />
       </video>
 
       {/* 2. KONTEN TENGAH */}
