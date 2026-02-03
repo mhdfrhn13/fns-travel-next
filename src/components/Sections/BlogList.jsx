@@ -55,12 +55,12 @@ const BlogList = ({ data }) => {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-2xl font-bold text-gray-800 mb-3 group-hover:text-travel-primary transition-colors">
+                <h3 className="font-serif text-xl font-bold text-gray-800 mb-3 group-hover:text-travel-primary transition-colors line-clamp-2 min-h-[3.5rem]">
                   <Link href={`/itinerary/${item.slug}`}>{item.title}</Link>
                 </h3>
 
                 {/* Description (Line Clamp 3 Baris agar rapi) */}
-                <p className="font-sans text-gray-600 mb-6 text-sm line-clamp-3 leading-relaxed">
+                <p className="font-sans text-gray-600 mb-6 text-sm line-clamp-3 leading-relaxed flex-grow">
                   {item.description}
                 </p>
 

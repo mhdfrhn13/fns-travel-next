@@ -128,11 +128,11 @@ const PackagesContent = () => {
                     <span>{pkg.duration}</span>
                   </div>
                   <Link href={`/itinerary/${pkg.slug}`}>
-                    <h3 className="font-serif text-2xl font-bold text-gray-900 mb-3 group-hover:text-travel-primary transition-colors">
+                    <h3 className="font-serif text-xl font-bold text-gray-900 mb-3 group-hover:text-travel-primary transition-colors line-clamp-2 min-h-[3.5rem]">
                       {pkg.title}
                     </h3>
                   </Link>
-                  <p className="text-gray-600 mb-6 text-sm line-clamp-3 flex-grow">
+                  <p className="text-gray-600 mb-6 text-sm line-clamp-3 leading-relaxed flex-grow">
                     {pkg.description}
                   </p>
                   <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
