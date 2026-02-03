@@ -24,7 +24,7 @@ const Transportation = async () => {
     <main className="bg-white pb-20 pt-[80px]">
       <PageHeader
         title="Sewa Mobil & Transportasi"
-        image="/assets/kelok9.jpg"
+        image="/assets/pageHeader.jpg"
         subtitle="Armada terawat dengan sopir berpengalaman"
       />
       <div className="max-w-[1200px] mx-auto px-6 py-20"></div>

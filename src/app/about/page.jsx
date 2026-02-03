@@ -14,7 +14,7 @@ export default function AboutPage() {
       <PageHeader
         title="Tentang Kami"
         subtitle="Mengenal Lebih Dekat FnS Tour and Travel"
-        image="/assets/blog1.jpg"
+        image="/assets/pageHeader.jpg"
       />
 
       <div className="max-w-[1200px] mx-auto px-6 py-20"></div>
