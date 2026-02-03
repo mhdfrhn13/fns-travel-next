@@ -12,7 +12,7 @@ const PageHeader = ({ title, subtitle, image }) => {
           className="w-full h-full object-cover"
         />
         {/* Overlay Gelap agar teks terbaca jelas */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/10"></div>
       </div>
 
       {/* 2. KONTEN JUDUL */}

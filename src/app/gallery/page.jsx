@@ -36,7 +36,7 @@ const GalleryPage = () => {
       <PageHeader
         title="Galeri Perjalanan"
         subtitle="Momen-momen indah yang telah kami abadikan bersama para pelanggan setia."
-        image="/assets/pagaruyung.webp"
+        image="/assets/pageHeader.jpg"
       />
       <div className="max-w-[1200px] mx-auto px-6 py-20"></div>
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">

@@ -65,7 +65,7 @@ const ContactPage = () => {
         <PageHeader
           title="Hubungi Kami"
           subtitle="Kami siap membantu merencanakan liburan impian Anda"
-          image="/assets/pagaruyung.webp"
+          image="/assets/pageHeader.jpg"
         />
       </Reveal>
 

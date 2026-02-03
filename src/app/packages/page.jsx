@@ -170,7 +170,7 @@ const PackagesPage = () => {
         <PageHeader
           title="Paket Wisata"
           subtitle="Temukan petualangan terbaik Anda"
-          image="/assets/background-bromo.jpg"
+          image="/assets/pageHeader.jpg"
         />
       </Reveal>
 
