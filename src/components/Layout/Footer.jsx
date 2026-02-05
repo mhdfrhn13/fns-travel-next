@@ -80,7 +80,7 @@ const Footer = () => {
                   href="https://wa.me/628218413734"
                   className="hover:text-travel-primary transition-colors"
                 >
-                  +62 853-6596-8845
+                  +62 821-8413-734
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
