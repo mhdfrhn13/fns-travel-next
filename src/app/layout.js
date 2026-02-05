@@ -32,10 +32,12 @@ export default function RootLayout({ children }) {
     <html lang="id">
       {/* 4. Masukkan variabel font ke body */}
       <body
-        className={`${playfair.variable} ${poppins.variable} antialiased font-sans bg-bg-soft text-gray-800`}
+        className={`${playfair.variable} ${poppins.variable} font-sans bg-bg-soft text-gray-800`}
       >
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+
+        <main className="min-h-screen overflow-hidden">{children}</main>
+
         <Footer />
         {/* Floating WA Button */}
         <a

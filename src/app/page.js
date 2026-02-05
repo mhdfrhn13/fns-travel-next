@@ -47,7 +47,7 @@ const Home = async () => {
   const { gallery, packages, cars } = await getHomeData();
 
   return (
-    <main className="bg-white overflow-x-hidden">
+    <main className="bg-white overflow -hidden">
       {/* 1. HERO SECTION */}
       <Hero />
 
