@@ -77,7 +77,7 @@ const Footer = () => {
               <li className="flex items-center gap-3 text-gray-400">
                 <FaPhone className="text-travel-primary flex-shrink-0" />
                 <a
-                  href="https://wa.me/6285365968845"
+                  href="https://wa.me/628218413734"
                   className="hover:text-travel-primary transition-colors"
                 >
                   +62 853-6596-8845
