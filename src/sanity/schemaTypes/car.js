@@ -5,18 +5,6 @@ export default {
   fields: [
     { name: "name", title: "Nama Mobil", type: "string" },
     {
-      name: "type",
-      title: "Kategori",
-      type: "string",
-      options: {
-        list: [
-          { title: "MPV", value: "MPV" },
-          { title: "MPV Premium", value: "MPV Premium" },
-          { title: "Minibus", value: "Minibus" },
-        ],
-      },
-    },
-    {
       name: "image",
       title: "Foto Mobil",
       type: "image",

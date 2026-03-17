@@ -32,7 +32,6 @@ async function getHomeData() {
     "cars": *[_type == "car"] | order(price asc)[0...3] { 
       _id,
       name,
-      type,
       image,
       capacity,
       price
