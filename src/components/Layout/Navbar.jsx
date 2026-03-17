@@ -81,7 +81,7 @@ const Navbar = () => {
               onClick={handleHomeClick}
               className="hover:text-travel-primary transition uppercase text-sm tracking-wider"
             >
-              Home
+              Beranda
             </Link>
           </li>
 
@@ -190,7 +190,7 @@ const Navbar = () => {
               className="block py-3 px-8 hover:bg-gray-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Home
+              Beranda
             </Link>
           </li>
 
