@@ -24,8 +24,6 @@ const CustomTripCTA = () => {
   }, []);
 
   // --- TAMPILAN 1: ICON KECIL (MINIMIZED) ---
-  // Muncul jika user menekan tombol close.
-  // Posisi bottom-24 (sekitar 6rem/96px) agar berada DI ATAS tombol WA standar.
   if (isMinimized) {
     return (
       <div
@@ -50,7 +48,7 @@ const CustomTripCTA = () => {
     <div
       className={`fixed z-50 transition-all duration-700 transform ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-      } bottom-4 right-4 md:bottom-8 md:right-8 w-[90%] md:w-auto left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0`}
+      } bottom-22 right-4 md:bottom-22 md:right-8 w-[90%] md:w-auto left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0`}
     >
       <div className="bg-white p-5 rounded-2xl shadow-2xl border-t-4 border-travel-primary flex flex-col md:flex-row items-center gap-4 md:max-w-md relative animate-fade-in-up">
         {/* Tombol Minimize (-) / Close (X) */}

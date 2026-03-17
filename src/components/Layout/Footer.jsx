@@ -19,7 +19,7 @@ const Footer = () => {
           {/* KOLOM 1: TENTANG & SOSMED */}
           <div>
             <h3 className="text-2xl font-serif font-bold text-white mb-4">
-              FnS Travel
+              FnS Tour & Travel
             </h3>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Sahabat perjalanan terbaik Anda menjelajahi keindahan alam dan
@@ -126,7 +126,8 @@ const Footer = () => {
         {/* COPYRIGHT */}
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} FnS Travel. All rights reserved.
+            &copy; {new Date().getFullYear()} FnS Tour & Travel. All rights
+            reserved.
           </p>
         </div>
       </div>
