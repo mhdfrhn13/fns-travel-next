@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import PageHeader from "@/components/UI/PageHeader";
-import Reveal from "@/components/UI/Reveal"; // 1. Import Reveal
+import Reveal from "@/components/UI/Reveal";
 import {
   FaMapMarkerAlt,
   FaPhone,
@@ -29,7 +29,7 @@ const ContactPage = () => {
     setErrorMessage("");
 
     const formData = new FormData(e.target);
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeeejkap"; // Ganti dengan ID Anda
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeeejkap";
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -60,7 +60,6 @@ const ContactPage = () => {
 
   return (
     <main className="bg-white pb-20 pt-[80px]">
-      {/* 2. Wrap Header dengan Reveal */}
       <Reveal>
         <PageHeader
           title="Hubungi Kami"
@@ -72,7 +71,6 @@ const ContactPage = () => {
       <div className="max-w-[1200px] mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* === KOLOM KIRI: INFO KONTAK & SOSMED === */}
-          {/* 3. Wrap Kolom Kiri dengan Reveal (Slide dari Kiri) */}
           <div className="lg:col-span-1 space-y-8">
             <Reveal direction="left" delay={0.2}>
               {/* Kartu Informasi Kontak */}
@@ -155,7 +153,7 @@ const ContactPage = () => {
           </div>
 
           {/* === KOLOM KANAN: FORM PESAN === */}
-          {/* 4. Wrap Kolom Kanan dengan Reveal (Slide dari Kanan) */}
+
           <div className="lg:col-span-2">
             <Reveal direction="right" delay={0.4}>
               <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-travel-primary mb-8">

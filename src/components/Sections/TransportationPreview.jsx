@@ -76,10 +76,6 @@ const TransportationPreview = ({ data }) => {
                     <FaUserGroup className="text-travel-primary" />
                     <span>{car.capacity} Orang</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <FaCarSide className="text-travel-primary" />
-                    <span>Unit {car.type}</span>
-                  </div>
                 </div>
 
                 {/* Action Button */}
