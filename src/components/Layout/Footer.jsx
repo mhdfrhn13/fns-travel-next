@@ -23,7 +23,7 @@ const Footer = () => {
             </h3>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Sahabat perjalanan terbaik Anda menjelajahi keindahan alam dan
-              budaya Sumatera Barat. Nikmati pengalaman liburan tak terlupakan
+              budaya Indonesia. Nikmati pengalaman liburan tak terlupakan
               bersama kami.
             </p>
 
