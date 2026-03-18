@@ -24,7 +24,8 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "FnS Travel | Jelajah Nusantara",
-  description: "Agen perjalanan wisata terbaik di Sumatera Barat.",
+  description:
+    "FnS Tour and Travel adalah penyedia layanan perjalanan dan transportasi yang berdedikasi untuk menghadirkan pengalaman jelajah yang bermakna bagi setiap wisatawan.",
 };
 
 export default function RootLayout({ children }) {

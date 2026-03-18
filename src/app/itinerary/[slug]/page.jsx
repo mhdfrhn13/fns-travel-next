@@ -103,8 +103,38 @@ const ItineraryDetail = async ({ params }) => {
     return notFound();
   }
 
+  // Objek Structured Data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: data.title,
+    image: data.image ? urlFor(data.image).url() : "",
+    description: data.description,
+    offers: {
+      "@type": "Offer",
+      price: data.price.replace(/[^0-9]/g, ""), // Mengambil angka saja dari string harga
+      priceCurrency: "IDR",
+      availability: "https://schema.org/InStock",
+    },
+    aggregateRating:
+      data.reviews?.length > 0
+        ? {
+            "@type": "AggregateRating",
+            ratingValue: (
+              data.reviews.reduce((acc, item) => acc + item.rating, 0) /
+              data.reviews.length
+            ).toFixed(1),
+            reviewCount: data.reviews.length,
+          }
+        : undefined,
+  };
+
   return (
     <main className="bg-white min-h-screen pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* --- HEADER --- */}
       <PageHeader
         title={data.title}
