@@ -1,7 +1,8 @@
 import { client } from "@/lib/sanity";
 
 export default async function sitemap() {
-  const baseUrl = "https://fns-travel-next.vercel.app"; // Ganti dengan domain asli jika sudah beli
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://fnstourtravel.com"; // Ganti dengan domain asli jika sudah beli
 
   // 1. Ambil data slug dari Sanity untuk rute dinamis itinerary
   const query = `*[_type == "itinerary"] { "slug": slug.current, _updatedAt }`;

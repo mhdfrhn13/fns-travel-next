@@ -1,5 +1,6 @@
 export default function robots() {
-  const baseUrl = "https://fns-travel-next.vercel.app"; // Sesuai dengan domain di sitemap.js Anda
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://fnstourtravel.com"; // Sesuai dengan domain di sitemap.js Anda
 
   return {
     rules: {
@@ -7,6 +8,6 @@ export default function robots() {
       allow: "/",
       disallow: "/studio/", // Melarang bot mengindeks panel Sanity Studio Anda
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://fnstourtravel.com"}/sitemap.xml`,
   };
 }
