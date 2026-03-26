@@ -24,7 +24,7 @@ const poppins = Poppins({
 
 export const metadata = {
   metadataBase: new URL("https://fnstourtravel.com"),
-  title: "FnS Travel | Jelajah Nusantara",
+  title: "FnS Tour and Travel | Jelajah Nusantara",
   description:
     "FnS Tour and Travel adalah penyedia layanan perjalanan dan transportasi yang berdedikasi untuk menghadirkan pengalaman jelajah yang bermakna bagi setiap wisatawan.",
 };
