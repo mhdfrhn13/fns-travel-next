@@ -112,7 +112,7 @@ const ItineraryDetail = async ({ params }) => {
     description: data.description,
     offers: {
       "@type": "Offer",
-      price: data.price.replace(/[^0-9]/g, ""), // Mengambil angka saja dari string harga
+      price: data.price ? data.price.replace(/[^0-9]/g, "") : "0", // Mengambil angka saja dari string harga
       priceCurrency: "IDR",
       availability: "https://schema.org/InStock",
     },
