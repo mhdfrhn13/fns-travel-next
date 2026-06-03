@@ -3,6 +3,7 @@ import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
 import { getWhatsAppLink } from "@/lib/utils";
 import { WA_MESSAGES } from "@/lib/constants";
+import HideOnStudio from "@/components/Layout/HideOnStudio";
 
 // 1. Import Font dari Google (Playfair Display & Poppins)
 import { Playfair_Display, Poppins } from "next/font/google";
@@ -36,20 +37,24 @@ export default function RootLayout({ children }) {
       <body
         className={`${playfair.variable} ${poppins.variable} font-sans bg-bg-soft text-gray-800`}
       >
-        <Navbar />
+        <HideOnStudio>
+          <Navbar />
+        </HideOnStudio>
 
         <main className="min-h-screen overflow-hidden">{children}</main>
 
         <Footer />
         {/* Floating WA Button */}
-        <a
-          href={getWhatsAppLink(WA_MESSAGES.general)}
-          target="_blank"
-          className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all flex items-center gap-2"
-        >
-          {/* Icon WA bisa pakai react-icons/fa */}
-          <span className="font-bold">Chat Kami</span>
-        </a>
+        <HideOnStudio>
+          <a
+            href={getWhatsAppLink(WA_MESSAGES.general)}
+            target="_blank"
+            className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all flex items-center gap-2"
+          >
+            {/* Icon WA bisa pakai react-icons/fa */}
+            <span className="font-bold">Chat Kami</span>
+          </a>
+        </HideOnStudio>
       </body>
     </html>
   );
