@@ -101,7 +101,7 @@ const PackagesContent = () => {
           Memuat paket wisata...
         </div>
       ) : filteredPackages.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {filteredPackages.map((pkg, index) => (
             <Reveal key={pkg._id} direction="up" delay={index * 0.1}>
               <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 flex flex-col h-full">
