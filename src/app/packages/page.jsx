@@ -31,7 +31,7 @@ const PackagesContent = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const query = `*[_type == "itinerary"] | order(_createdAt desc) {
+        const query = `*[_type == "itinerary" && isActive == true] | order(_createdAt desc) {
           _id,
           title,
           "slug": slug.current,

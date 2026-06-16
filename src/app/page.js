@@ -20,7 +20,7 @@ async function getHomeData() {
       location,
       category
     },
-    "packages": *[_type == "itinerary" && isFeatured == true] | order(_createdAt desc)[0...3]{
+    "packages": *[_type == "itinerary" && isFeatured == true && isActive == true] | order(_createdAt desc)[0...3]{
       _id,
       title,
       "slug": slug.current,
@@ -29,7 +29,7 @@ async function getHomeData() {
       duration,
       description
     },
-    "cars": *[_type == "car"] | order(price asc)[0...3] { 
+    "cars": *[_type == "car" && isActive == true] | order(price asc)[0...3] { 
       _id,
       name,
       image,

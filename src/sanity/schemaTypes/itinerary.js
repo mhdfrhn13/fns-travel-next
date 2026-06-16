@@ -5,6 +5,14 @@ export default {
   fields: [
     { name: "title", title: "Judul Paket", type: "string" },
     {
+      name: "isActive",
+      title: "Status Aktif",
+      type: "boolean",
+      initialValue: true,
+      description:
+        "Matikan centang ini untuk menyembunyikan paket dari website tanpa harus melakukan unpublish.",
+    },
+    {
       name: "isFeatured",
       title: "Tampilkan di Home",
       type: "boolean",

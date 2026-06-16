@@ -11,7 +11,7 @@ import { client, urlFor } from "@/lib/sanity";
 // 2. Fungsi Fetch Data (Tanpa useEffect!)
 async function getCars() {
   // Query GROQ: Ambil semua data tipe 'car'
-  const query = `*[_type == "car"] | order(price asc)`;
+  const query = `*[_type == "car" && isActive == true] | order(price asc)`;
   const data = await client.fetch(query);
   return data;
 }
