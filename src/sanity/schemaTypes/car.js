@@ -5,6 +5,14 @@ export default {
   fields: [
     { name: "name", title: "Nama Mobil", type: "string" },
     {
+      name: "isActive",
+      title: "Status Aktif",
+      type: "boolean",
+      initialValue: true, // Default: aktif
+      description:
+        "Matikan centang ini jika mobil sedang tidak tersedia/disewa atau ingin disembunyikan.",
+    },
+    {
       name: "image",
       title: "Foto Mobil",
       type: "image",
