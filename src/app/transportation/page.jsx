@@ -8,6 +8,8 @@ import Reveal from "@/components/UI/Reveal";
 // 1. Import Sanity Client
 import { client, urlFor } from "@/lib/sanity";
 
+export const revalidate = 60;
+
 // 2. Fungsi Fetch Data (Tanpa useEffect!)
 async function getCars() {
   // Query GROQ: Ambil semua data tipe 'car'
