@@ -99,7 +99,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900">Telepon / WA</h4>
-                      <p className="text-gray-600 text-sm">+62 853-6596-8845</p>
+                      <p className="text-gray-600 text-sm">+62 821-8413-734</p>
                     </div>
                   </div>
 
@@ -110,7 +110,7 @@ const ContactPage = () => {
                     <div>
                       <h4 className="font-bold text-gray-900">Email</h4>
                       <p className="text-gray-600 text-sm">
-                        fnsholiday@gmail.com
+                        fnstourandtravel@gmail.com
                       </p>
                     </div>
                   </div>
