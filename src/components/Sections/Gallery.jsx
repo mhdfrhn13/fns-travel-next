@@ -50,12 +50,17 @@ const Gallery = ({ data }) => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
-                    <p className="text-travel-gold text-xs uppercase tracking-widest">
-                      {item.location}
-                    </p>
-                    <h3 className="text-white font-serif text-lg font-bold">
-                      {item.title}
-                    </h3>
+                    {item.location && (
+                      <p className="text-travel-gold text-xs uppercase tracking-widest">
+                        {item.location}
+                      </p>
+                    )}
+                    {/* Render judul hanya jika ada */}
+                    {item.title && (
+                      <h3 className="text-white font-serif text-lg font-bold">
+                        {item.title}
+                      </h3>
+                    )}
                   </div>
                 </div>
               </SwiperSlide>
@@ -81,12 +86,17 @@ const Gallery = ({ data }) => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <span className="text-travel-gold text-xs uppercase tracking-widest mb-1">
-                  {item.location}
-                </span>
-                <h3 className="text-white font-serif text-xl font-bold">
-                  {item.title}
-                </h3>
+                {item.location && (
+                  <span className="text-travel-gold text-xs uppercase tracking-widest mb-1">
+                    {item.location}
+                  </span>
+                )}
+                {/* Render judul hanya jika ada */}
+                {item.title && (
+                  <h3 className="text-white font-serif text-xl font-bold">
+                    {item.title}
+                  </h3>
+                )}
               </div>
             </div>
           ))}

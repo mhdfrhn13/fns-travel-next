@@ -66,9 +66,11 @@ const GalleryPage = () => {
 
                   {/* Overlay dengan icon zoom */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span className="text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      {item.title}
-                    </span>
+                    {item.title && (
+                      <span className="text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        {item.title}
+                      </span>
+                    )}
 
                     {item.location && (
                       <div className="flex items-center gap-2 text-gray-200 text-sm mt-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">

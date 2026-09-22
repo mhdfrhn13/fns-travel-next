@@ -7,7 +7,6 @@ export default {
       name: "title",
       title: "Judul / Caption",
       type: "string",
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "location",
@@ -21,7 +20,6 @@ export default {
       options: {
         hotspot: true, // Agar bisa crop titik fokus
       },
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "category",
