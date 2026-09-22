@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
 import { FaUserGroup, FaCarSide, FaWhatsapp } from "react-icons/fa6";
 import { getWhatsAppLink } from "@/lib/utils";
@@ -40,15 +41,19 @@ const TransportationPreview = ({ data }) => {
               className="group bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
               {/* 1. Image Container */}
-              <div className="relative aspect-[16/10] bg-gray-50 rounded-xl overflow-hidden mb-6">
+              <div className="relative w-full overflow-hidden bg-gray-50 rounded-xl mb-6">
                 {/* Background dekoratif bulat di belakang mobil */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-travel-primary/5 rounded-full blur-2xl group-hover:bg-travel-primary/10 transition-colors"></div>
 
                 {car.image && (
-                  <img
+                  <Image
                     src={urlFor(car.image).url()}
                     alt={car.name}
-                    className="relative w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "auto" }} // Membiarkan gambar menggunakan rasio aslinya
+                    className="relative z-10 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 )}
               </div>

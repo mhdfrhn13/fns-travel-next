@@ -36,13 +36,16 @@ const Transportation = async () => {
             <Reveal key={car._id} direction="up" delay={index * 0.1}>
               <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
                 {/* GAMBAR DARI SANITY */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
+                <div className="relative w-full overflow-hidden bg-gray-50">
                   {car.image && (
                     <Image
-                      src={urlFor(car.image).url()} // Helper function untuk URL gambar
+                      src={urlFor(car.image).url()}
                       alt={car.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      width={0} // Wajib 0 jika menggunakan style width 100%
+                      height={0} // Wajib 0 jika menggunakan style height auto
+                      sizes="100vw"
+                      style={{ width: "100%", height: "auto" }} // Mempertahankan rasio asli
+                      className="transition-transform duration-700 group-hover:scale-110 object-cover"
                     />
                   )}
                 </div>
