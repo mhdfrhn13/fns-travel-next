@@ -86,10 +86,10 @@ const Footer = () => {
               <li className="flex items-center gap-3 text-gray-400">
                 <FaEnvelope className="text-travel-primary flex-shrink-0" />
                 <a
-                  href="mailto:fnsholiday@gmail.com"
+                  href="mailto:fnstourandtravel@gmail.com"
                   className="hover:text-travel-primary transition-colors"
                 >
-                  fnsholiday@gmail.com
+                  fnstourandtravel@gmail.com
                 </a>
               </li>
             </ul>
